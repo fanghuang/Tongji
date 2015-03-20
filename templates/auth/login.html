@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block page %}
+    {% if not user.is_authenticated %}
+
+        <form action="." method="post">
+            {% csrf_token %}
+            <p>Student ID: <input name="studentid"></p>
+            <p>Password: <input name="password" type="password"></p>
+            <p><input type="submit"></p>
+
+
+
+
+        </form>
+
+
+
+    {% else %}
+        <h2 class="page-header"><p>{% trans "您已经登陆。" %}</p></h2>
+        <a class="btn btn-primary" href="{% url 'group_list' %}"><i class="icon-chevron-left"></i> {% trans "返回分组管理" %}</a>
+    {% endif %}
+
+{% endblock %}
