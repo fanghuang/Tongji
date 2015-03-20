@@ -1,8 +1,9 @@
 # Tongji
 
 ```
-$ pip install virtualenv
+$ mkdir [my_project_folder]
 $ cd [my_project_folder]
+$ pip install virtualenv
 $ virtualenv venv
 $ source venv/bin/activate
 $ git init
