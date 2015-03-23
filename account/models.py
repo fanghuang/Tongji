@@ -1,4 +1,3 @@
-import datetime
 from django.db import models
 
 # Create your models here.
@@ -14,11 +13,17 @@ class Teacher(models.Model):
     ASSOCIATE_PROFESSOR = "ASSO"
     ASSISTANT_PROFESSOR = "ASSI"
     INSTRUCTOR = "INST"
-    POSITION_CHOICE = ()
 
+    POSITION_CHOICE = (
+        (PROFESSOR, 'Professor'),
+        (ASSOCIATE_PROFESSOR, 'Associate Professor'),
+        (ASSISTANT_PROFESSOR, 'Assistant Professor'),
+        (INSTRUCTOR, 'Instructor'),
+
+    )
 
     position = models.CharField(max_length=2,
-                                      choices=POSITION_CHOICE,
-                                      default=PROFESSOR)
+                                choices=POSITION_CHOICE,
+                                default=PROFESSOR)
     phone = models.CharField(max_length=11)
     email = models.EmailField()

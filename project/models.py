@@ -1,6 +1,6 @@
 from django.db import models
 
-# Create your models here.
+
 class Project(models.Model):
     SCHOOL = "A"
     UNIVERSITY = "B"
@@ -23,16 +23,9 @@ class Project(models.Model):
     finished_time = models.DateTimeField()
 
 
-
-
-
-
 class Mark(models.Model):
-
-
-
-
     project = models.ForeignKey('project.Project')
     comment = models.TextField()
-    grade = models.IntegerField()
-    #stage =
+    credit = models.IntegerField()
+    # TODO
+    # stage
