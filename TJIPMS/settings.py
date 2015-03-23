@@ -52,6 +52,11 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'account.backends.StudentIDModelBackend',
+)
+
 ROOT_URLCONF = 'TJIPMS.urls'
 
 WSGI_APPLICATION = 'TJIPMS.wsgi.application'

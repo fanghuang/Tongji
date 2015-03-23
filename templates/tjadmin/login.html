@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block page %}
+    {% if not user.is_authenticated %}
+        <h2>login for Admin</h2>
+        <form action="." method="post">
+            {% csrf_token %}
+            <p>Student ID: <input name="student_id"></p>
+            <p>Password: <input name="password" type="password"></p>
+            <p><input type="submit"></p>
+
+        </form>
+
+
+
+    {% else %}
+        <h2 class="page-header"><p>already Loged in</p></h2>
+
+    {% endif %}
+
+{% endblock %}

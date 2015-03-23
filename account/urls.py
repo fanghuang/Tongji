@@ -1,9 +1,8 @@
 from django.conf.urls import patterns, url
-from account import views
+from tjadmin import views
 
 
 urlpatterns = patterns('',
-
-    url(r'^login/$', views.login, name='login'),
-    url(r'^logout/$', 'django.contrib.auth.views.logout', name='logout', kwargs={'next_page':'/'}),
-)
+                       url(r'^login/$', views.LoginView.as_view(), name='login'),
+                       # url(r'^logout/$', 'django.contrib.auth.views.logout', name='logout', kwargs={'next_page': '/'}),
+                       )
