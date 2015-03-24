@@ -6,7 +6,17 @@
 </head>
 <body>
 <h1>this is the homepage</h1>
-<p><a href="{% url "login" %}">Login</a></p>
+
+ {% if not user.is_authenticated %}
+       <p><a href="{% url "login" %}">Login</a></p>
+
+    {% else %}
+        <h2 class="page-header"><p>already Loged in</p></h2>
+
+    {% endif %}
+
+
+
 <p><a href="{% url "tjadmin" %}">Admin</a></p>
 </body>
 </html>

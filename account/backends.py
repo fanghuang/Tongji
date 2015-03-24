@@ -4,6 +4,7 @@ from account.models import Student
 
 class StudentIDModelBackend(object):
 
+
     def authenticate(self, student_id=None, password=None):
 
         try:
