@@ -9,19 +9,19 @@ from account.models import Student
 class StaffLoginRequiredMixin(object):
     @classmethod
     def as_view(cls, **initkwargs):
-        view = super(staff_member_required, cls).as_view(**initkwargs)
+        view = super(StaffLoginRequiredMixin, cls).as_view(**initkwargs)
         return staff_member_required(view)
 
 
 class TJAdminLoginView(TemplateView):
     template_name = "tjadmin/login.html"
 
-class AdminView(TemplateView):
+class AdminView(StaffLoginRequiredMixin, TemplateView):
     template_name = "tjadmin/tjadmin.html"
 
 
 
-class CreateStudentView(TemplateView,StaffLoginRequiredMixin):
+class CreateStudentView(TemplateView, StaffLoginRequiredMixin):
 
     template_name = "tjadmin/create_student.html"
 
