@@ -1,22 +1,68 @@
-{% extends "base.html" %}
-{% load i18n %}
+<!DOCTYPE html>
+<html lang="en">
+  <main class='vignette'>
+    <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <link rel="icon" href="../../favicon.ico">
 
-{% block page %}
-    {% if not user.is_authenticated %}
-        <h2>login for student</h2>
-        <form action="." method="post">
-            {% csrf_token %}
-            <p>Student ID: <input name="student_id"></p>
-            <p>Password: <input name="password" type="password"></p>
-            <p><input type="submit"></p>
+      <title>Tongji Innovation Management System</title>
 
-        </form>
+      <!-- Bootstrap core CSS -->
+      <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+      <link href="/static/material/css/roboto.min.css" rel="stylesheet">
+      <link href="/static/material/css/material.min.css" rel="stylesheet">
+      <link href="/static/material/css/ripples.min.css" rel="stylesheet">
 
+      <!-- Custom styles for this template -->
+      <link href="/static/signin.css" rel="stylesheet">
 
+      <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+      <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+      <![endif]-->
+    </head>
 
-    {% else %}
-        <h2 class="page-header"><p>already Loged in</p></h2>
+    <body>
+      <div class="container">
+        <div class="well well-lg">
+          <div class="form-group">
+            <form action="." method="post" class="form-signin">
+                 {% csrf_token %}
+              <h1 class="form-signin-heading">Tongji University</h1>
+              <h3 class="form-signin-subheading">Innovation Management System</h3>
+              <div id="idNumberGroup" class="form-group has-error">
+                <input name="student_id" type="text" id="inputIdNumber" class="form-control floating-label" placeholder="ID Number" required autofocus>
+              </div>
+              <div id="passwordGroup" class="form-group has-error">
+                <input name="password" type="password" id="inputPassword" class="form-control floating-label" placeholder="Password" required>
+              </div>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" value="remember-me"> Remember me
+                </label>
+              </div>
+              <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+            </form>
+          </div>
+        </div>
+      </div> <!-- /container -->
 
-    {% endif %}
-
-{% endblock %}
+      <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+      <script src="/static/bootstrap/js/bootstrap.min.js"></script>
+      <script src="/static/material/js/ripples.min.js"></script>
+      <script src="/static/material/js/material.min.js"></script>
+      <script>
+          $(document).ready(function() {
+              // This command is used to initialize some elements and make them work properly
+              $.material.init();
+          });
+      </script>
+    </body>
+  </main>
+</html>
