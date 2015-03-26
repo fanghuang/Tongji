@@ -1,6 +1,8 @@
 from django.contrib.auth.decorators import login_required
 from django.views.generic import TemplateView
 
+from django.utils.translation import ugettext as _
+
 class LoginRequiredMixin(object):
     @classmethod
     def as_view(cls, **initkwargs):
@@ -8,4 +10,5 @@ class LoginRequiredMixin(object):
         return login_required(view)
 
 class HomeView(LoginRequiredMixin, TemplateView):
+
     template_name = "index.html"

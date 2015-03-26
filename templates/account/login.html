@@ -1,3 +1,5 @@
+{% load i18n %}
+
 <!DOCTYPE html>
 <html lang="en">
   <main class='vignette'>
@@ -34,7 +36,7 @@
           <div class="form-group">
             <form action="." method="post" class="form-signin">
                  {% csrf_token %}
-              <h1 class="form-signin-heading">Tongji University</h1>
+              <h1 class="form-signin-heading">{% trans "Tongji University" %}</h1>
               <h3 class="form-signin-subheading">Innovation Management System</h3>
               <div id="idNumberGroup" class="form-group has-error">
                 <input name="student_id" type="text" id="inputIdNumber" class="form-control floating-label" placeholder="ID Number" required autofocus>
@@ -53,7 +55,7 @@
         </div>
       </div> <!-- /container -->
 
-      <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+      <script src="/static/bootstrap/js/jquery.min.js"></script>
       <script src="/static/bootstrap/js/bootstrap.min.js"></script>
       <script src="/static/material/js/ripples.min.js"></script>
       <script src="/static/material/js/material.min.js"></script>
