@@ -1,9 +1,11 @@
+import csv
 from django.contrib.auth.models import User
-from django.http import HttpResponse
-from django.shortcuts import render
+from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
 from django.contrib.admin.views.decorators import staff_member_required
 from account.models import Student
+from tjadmin.forms import UploadFileForm
 
 
 class StaffLoginRequiredMixin(object):
@@ -16,13 +18,12 @@ class StaffLoginRequiredMixin(object):
 class TJAdminLoginView(TemplateView):
     template_name = "tjadmin/login.html"
 
+
 class AdminView(StaffLoginRequiredMixin, TemplateView):
     template_name = "tjadmin/tjadmin.html"
 
 
-
-class CreateStudentView(TemplateView, StaffLoginRequiredMixin):
-
+class CreateStudentView(StaffLoginRequiredMixin, TemplateView):
     template_name = "tjadmin/create_student.html"
 
     def post(self, request):
@@ -31,4 +32,28 @@ class CreateStudentView(TemplateView, StaffLoginRequiredMixin):
         password = request.POST['password']
         start_year = request.POST['start_year']
         student = Student.create_student(student_id, name, password, start_year)
-        return HttpResponse(str(student)+" created")
+        return HttpResponse(str(student) + " created")
+
+
+class UploadStudentView(StaffLoginRequiredMixin, TemplateView):
+    template_name = "tjadmin/upload_student.html"
+
+    def post(self, request):
+        form = UploadFileForm(request.POST, request.FILES)
+        if form.is_valid():
+            student_file = request.FILES['student_file']
+            student_list = parse_student_file(student_file)
+            return render(request, "tjadmin/upload_student_confirm.html", {'student_list': student_list})
+        else:
+            return redirect("tjadmin_upload_student")
+
+class UploadStudentConfirmedView(StaffLoginRequiredMixin, TemplateView):
+
+    def get(self, request):
+        print request
+
+
+def parse_student_file(file):
+    reader = csv.reader(file)
+    stu_list = list(reader)
+    return stu_list

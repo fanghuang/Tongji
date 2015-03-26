@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block page %}
+
+<table>
+<tr>
+    <th>student id</th>
+    <th>student name</th>
+    <th>student year</th>
+    <th>password</th>
+</tr>
+
+
+    {% for stu in student_list %}
+        <tr>
+        <td>{{ stu.0 }}</td>
+        <td>{{ stu.1 }}</td>
+        <td>{{ stu.2 }}</td>
+        <td>{{ stu.3 }}</td>
+        </tr>
+    {% endfor %}
+
+
+
+
+
+</table>
+
+
+
+
+
+    <p><a href="{% url 'tjadmin_upload_student_confirmed' %}">yes</a> </p>
+
+{% endblock %}

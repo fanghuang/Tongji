@@ -1,5 +1,6 @@
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponse
+from django.shortcuts import redirect, render
 from django.views.generic import TemplateView
 
 
@@ -15,8 +16,12 @@ class LoginView(TemplateView):
         if user is not None:
             if user.is_active:
                 login(request, user)
-                return HttpResponse("success")
+                if user.is_staff:
+                    return redirect("tjadmin")
+                else:
+
+                    return redirect("index")
             else:
                 return HttpResponse("disabled account")
         else:
-            return HttpResponse("invalid login")
+            return render(request, "account/login.html", {'invalid': True})
