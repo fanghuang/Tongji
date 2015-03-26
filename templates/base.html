@@ -1,3 +1,4 @@
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
@@ -18,7 +19,7 @@
       <link href="/static/material/css/ripples.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="studentmaster.css" rel="stylesheet">
+    <link href="/static/base.css" rel="stylesheet">
 
     <script src="/static/bootstrap/js/ie-emulation-modes-warning.js"></script>
 
@@ -35,7 +36,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="javascript:void(0)">Tongji Innovation Management System</a>
+                <a class="navbar-brand" href="javascript:void(0)">{% trans "Tongji Innovation Management System"%}</a>
             </div>
             <div class="navbar-collapse collapse navbar-inverse-collapse">
                 <ul class="nav navbar-nav">
@@ -47,10 +48,10 @@
                     <li class="dropdown">
                         <a href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown">{{user.first_name }}<b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li><a href="javascript:void(0)">Profile</a></li>
-                            <li><a href="javascript:void(0)">Account Settings</a></li>
+                            <li><a href="javascript:void(0)">{% trans "Profile" %}</a></li>
+                            <li><a href="javascript:void(0)">{% trans "Account Settings" %}</a></li>
                             <li class="divider"></li>
-                            <li><a href="javascript:void(0)">Log-Out</a></li>
+                            <li><a href="javascript:void(0)">{% trans "Log Out" %}</a></li>
                         </ul>
                     </li>
                 </ul>

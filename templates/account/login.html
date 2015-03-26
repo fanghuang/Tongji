@@ -37,19 +37,19 @@
             <form action="." method="post" class="form-signin">
                  {% csrf_token %}
               <h1 class="form-signin-heading">{% trans "Tongji University" %}</h1>
-              <h3 class="form-signin-subheading">Innovation Management System</h3>
+              <h3 class="form-signin-subheading">{% trans "Innovation Management System" %}</h3>
               <div id="idNumberGroup" class="form-group has-error">
-                <input name="student_id" type="text" id="inputIdNumber" class="form-control floating-label" placeholder="ID Number" required autofocus>
+                <input name="student_id" type="text" id="inputIdNumber" class="form-control floating-label" placeholder="{% trans "ID Number" %}" required autofocus>
               </div>
               <div id="passwordGroup" class="form-group has-error">
-                <input name="password" type="password" id="inputPassword" class="form-control floating-label" placeholder="Password" required>
+                <input name="password" type="password" id="inputPassword" class="form-control floating-label" placeholder="{% trans "Password" %}" required>
               </div>
               <div class="checkbox">
                 <label>
-                  <input type="checkbox" value="remember-me"> Remember me
+                  <input type="checkbox" value="remember-me"> {% trans "Remember me" %}
                 </label>
               </div>
-              <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+              <button class="btn btn-lg btn-primary btn-block" type="submit">{% trans "Sign in" %}</button>
             </form>
           </div>
         </div>
