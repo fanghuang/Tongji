@@ -1,0 +1,67 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-03-26 15:05+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: TJIPMS/settings.py:94
+msgid "English"
+msgstr "英文"
+
+#: TJIPMS/settings.py:95
+msgid "Simplified Chinese"
+msgstr "简体中文"
+
+#: templates/account/login.html:39
+msgid "Tongji University"
+msgstr "同济大学"
+
+#: templates/account/login.html:40
+msgid "Innovation Management System"
+msgstr "创新项目管理系统"
+
+#: templates/account/login.html:42
+msgid "ID Number"
+msgstr "学号"
+
+#: templates/account/login.html:45
+msgid "Password"
+msgstr "密码"
+
+#: templates/account/login.html:49
+msgid "Remember me"
+msgstr "记住我"
+
+#: templates/account/login.html:52
+msgid "Sign in"
+msgstr "登录"
+
+#: templates/base.html:39
+msgid "Tongji Innovation Management System"
+msgstr "同济大学创新项目管理系统"
+
+#: templates/base.html:51
+msgid "Profile"
+msgstr "个人信息"
+
+#: templates/base.html:52
+msgid "Account Settings"
+msgstr "帐号设置"
+
+#: templates/base.html:54
+msgid "Log Out"
+msgstr "退出"

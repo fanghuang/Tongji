@@ -46,12 +46,14 @@ INSTALLED_APPS = (
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
 )
 
 AUTHENTICATION_BACKENDS = (
@@ -90,7 +92,7 @@ USE_TZ = True
 
 LANGUAGES = (
     ('en', _('English')),
-    ('zh-hans', _('Simplified Chinese')),
+    ('zh-cn', _('Simplified Chinese')),
 )
 
 LOCALE_PATHS = (
@@ -106,10 +108,17 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
 )
 
-STATIC_ROOT = os.path.join(BASE_DIR, "static_root")
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR,  'templates'),
 )
 
+
+
 LOGIN_URL = '/account/login'
+
+# Simplified static file serving.
+# https://warehouse.python.org/project/whitenoise/
+
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
