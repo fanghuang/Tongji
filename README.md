@@ -29,3 +29,8 @@ When you finish coding:
 ```bash
 $ deactivate
 ```
+
+Or you can do this instead:
+```bash
+$ pip install -r requirements.txt
+$ python manage.py runserver
