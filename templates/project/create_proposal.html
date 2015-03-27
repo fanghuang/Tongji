@@ -1,47 +1,11 @@
-<html>
+{% extends "base.html" %}
+{% load i18n %}
 
-    <head>
 
-        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
-        <!-- Include roboto.css to use the Roboto web font, material.css to include the theme and ripples.css to style the ripple effect -->
-        <link href="css/roboto.min.css" rel="stylesheet">
-        <link href="css/material.min.css" rel="stylesheet">
-        <link href="css/ripples.min.css" rel="stylesheet">
-
-    </head>
-
-    <body>
-    	<nav class="navbar navbar-inverse navbar-static-top">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-inverse-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="javascript:void(0)">Tongji Innovation Management System</a>
-        </div>
-        <div class="navbar-collapse collapse navbar-inverse-collapse">
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="javascript:void(0)">Active</a></li>
-                <li><a href="javascript:void(0)">Proposals</a></li>
-                <li><a href="javascript:void(0)">News</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li class="dropdown">
-                    <a href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown">Username <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="javascript:void(0)">Profile</a></li>
-                        <li><a href="javascript:void(0)">Account Settings</a></li>
-                        <li class="divider"></li>
-                        <li><a href="javascript:void(0)">Log-Out</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </nav>
-        <!-- Your site -->
-		<div class="row">
-        <div class="col-lg-8">
+{% block page %}
+<div class="row">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-8 center-block">
         <div class="well bs-component">
         <form class="form-horizontal">
     	<fieldset>
@@ -101,21 +65,4 @@
 		</div>
 		</div>
 		</div>
-		
-        <!-- Your site ends -->
-
-        <script src="code.jquery.com/jquery-1.10.2.min.js"></script>
-        <script src="maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-
-        <script src="js/ripples.min.js"></script>
-        <script src="js/material.min.js"></script>
-        <script>
-            $(document).ready(function() {
-                // This command is used to initialize some elements and make them work properly
-                $.material.init();
-            });
-        </script>
-
-    </body>
-
-</html>
+{% endblock %}

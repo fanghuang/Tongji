@@ -1,5 +1,8 @@
 # Tongji
 
+Latest running version [here](https://tongji.herokuapp.com/)
+
+
 ## Setup
 
 Setup environment for the first time:
