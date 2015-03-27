@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 from django.utils.translation import ugettext_lazy as _
+import dj_database_url
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
@@ -108,7 +109,7 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
 )
 
-STATIC_ROOT = os.path.join(BASE_DIR, "static_root")
+STATIC_ROOT = 'staticfiles'
 
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR,  'templates'),
@@ -117,3 +118,12 @@ TEMPLATE_DIRS = (
 
 
 LOGIN_URL = '/account/login'
+
+DATABASES['default'] =  dj_database_url.config()
+# Enable Connection Pooling
+DATABASES['default']['ENGINE'] = 'django_postgrespool'
+
+# Simplified static file serving.
+# https://warehouse.python.org/project/whitenoise/
+
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
