@@ -1,0 +1,83 @@
+body {
+  height:100%;
+  padding-top: auto;
+  padding-bottom: auto;
+}
+
+html{
+  height:100%;
+}
+
+.form-signin {
+  padding: 15px;
+  margin: 0 auto;
+}
+.form-signin .form-signin-heading,
+.form-signin .form-signin-subheading,
+.form-signin .checkbox {
+  margin-bottom: 10px;
+  text-align: left;
+}
+.container .well {
+  margin-left: auto;
+  margin-right: auto;
+  vertical-align: middle;
+  max-width: 400px;
+}
+
+.container {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.well .form-group {
+  margin-bottom: 0px;
+}
+.form-signin .checkbox {
+  font-weight: normal;
+}
+.form-signin .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.vignette {
+  /*width: "100%";*/
+  /*text-align: center;*/
+  height: 100%;
+  /*margin-top: auto;*/
+  background: #4096ee; /* Old browsers */
+  background: -moz-radial-gradient(center, ellipse cover,  #4096ee 0%, #B3E5FC 0%, #1565C0 100%); /* FF3.6+ */
+  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#4096ee), color-stop(0%,#B3E5FC), color-stop(100%,#1565C0)); /* Chrome,Safari4+ */
+  background: -webkit-radial-gradient(center, ellipse cover,  #4096ee 0%,#B3E5FC 0%,#1565C0 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-radial-gradient(center, ellipse cover,  #4096ee 0%,#B3E5FC 0%,#1565C0 100%); /* Opera 12+ */
+  background: -ms-radial-gradient(center, ellipse cover,  #4096ee 0%,#B3E5FC 0%,#1565C0 100%); /* IE10+ */
+  background: radial-gradient(ellipse at center,  #4096ee 0%,#B3E5FC 0%,#1565C0 100%); /* W3C */
+}
+
+.Absolute-Center {
+  width: 50%;
+  height: 50%;
+  overflow: auto;
+  margin: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+}
