@@ -1,0 +1,121 @@
+<html>
+
+    <head>
+
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Include roboto.css to use the Roboto web font, material.css to include the theme and ripples.css to style the ripple effect -->
+        <link href="css/roboto.min.css" rel="stylesheet">
+        <link href="css/material.min.css" rel="stylesheet">
+        <link href="css/ripples.min.css" rel="stylesheet">
+
+    </head>
+
+    <body>
+    	<nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-inverse-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="javascript:void(0)">Tongji Innovation Management System</a>
+        </div>
+        <div class="navbar-collapse collapse navbar-inverse-collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="javascript:void(0)">Active</a></li>
+                <li><a href="javascript:void(0)">Proposals</a></li>
+                <li><a href="javascript:void(0)">News</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown">Username <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="javascript:void(0)">Profile</a></li>
+                        <li><a href="javascript:void(0)">Account Settings</a></li>
+                        <li class="divider"></li>
+                        <li><a href="javascript:void(0)">Log-Out</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+        <!-- Your site -->
+		<div class="row">
+        <div class="col-lg-8">
+        <div class="well bs-component">
+        <form class="form-horizontal">
+    	<fieldset>
+        <legend>New Proposal</legend>
+        <div class="form-group">
+            <label for="inputProposalName" class="col-lg-2 control-label">Proposal Name</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" id="inputProposalName" placeholder="Proposal Name">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputLeader" class="col-lg-2 control-label">Leader</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" id="inputLeader" placeholder="Leader">
+            </div>
+            <label for="inputMemberOne" class="col-lg-2 control-label">Member</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" id="inputMemberOne" placeholder="Member">
+            </div>
+            <label for="inputMemberTwo" class="col-lg-2 control-label">Member</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" id="inputMemberTwo" placeholder="Member">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="select" class="col-lg-2 control-label">Type</label>
+            <div class="col-lg-10">
+                <select class="form-control" id="select">
+                    <option>School-level students ' science and technology innovation project</option>
+                    <option>University-level students ' science and technology innovation project</option>
+                    <option>Province-level students ' science and technology innovation project</option>
+                    <option>Nation-level students ' science and technology innovation project</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+        	<label for="inputInstructor" class="col-lg-2 control-label">Instructor</label>
+        	<div class="col-lg-10">
+                <input type="text" class="form-control" id="inputInstructor" placeholder="Instructor">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="textArea" class="col-lg-2 control-label">Description</label>
+            <div class="col-lg-10">
+                <textarea class="form-control" rows="3" id="textArea"></textarea>
+                <span class="help-block">Enter some descriptions of your project here.</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-lg-10 col-lg-offset-2">
+                <button class="btn btn-default">Cancel</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    	</fieldset>
+		</form>
+		</div>
+		</div>
+		</div>
+		
+        <!-- Your site ends -->
+
+        <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+        <script src="js/ripples.min.js"></script>
+        <script src="js/material.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                // This command is used to initialize some elements and make them work properly
+                $.material.init();
+            });
+        </script>
+
+    </body>
+
+</html>
