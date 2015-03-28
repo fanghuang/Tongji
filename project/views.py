@@ -18,13 +18,13 @@ class ProposalCreateView(LoginRequiredMixin, View):
         form = ProposalForm(request.POST)
         if form.is_valid():
             title = form.cleaned_data['title']
-            leader = form.cleaned_data['leader']
+            leader = request.user.username
             member1 = form.cleaned_data['member1']
             member2 = form.cleaned_data['member2']
             type = form.cleaned_data['type']
             instructor = form.cleaned_data['instructor']
             description = form.cleaned_data['description']
-            print form.cleaned_data
+            print leader
 
             return HttpResponse(form.cleaned_data)
         else:
