@@ -27,6 +27,10 @@ class Project(models.Model):
     def __unicode__(self):
         return self.title
 
+    def get_absolute_url(self):
+        from django.core.urlresolvers import reverse
+        return reverse('project_detail', args=[str(self.id)])
+
 
 class Mark(models.Model):
     project = models.ForeignKey('project.Project')

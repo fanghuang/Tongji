@@ -23,7 +23,7 @@ class LoginView(TemplateView):
                 if remember_me:
                     request.session.set_expiry(0)
                 else:
-                    request.session.set_expiry(10)
+                    request.session.set_expiry(600)
                 if user.is_staff:
                     return redirect("tjadmin")
                 else:

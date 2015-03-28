@@ -13,12 +13,24 @@
      <p><a href="{% url "create_proposal" %}">create proposal</a></p>
      <p>already Loged in</p>
         <p><a href="{% url "logout" %}">logout</a></p>
-     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><p>a</p>
+     <h3>Leading project</h3>
+     {% for lp in leading_project%}
+        <p><a href="{{ lp.get_absolute_url }}">{{ lp }}</a></p>
+     {% empty %}
+         None
+     {% endfor %}
+
+      <h3>Involved project</h3>
+     {% for ip in involved_project%}
+       <p><a href="{{ lp.get_absolute_url }}"> {{ ip }}</a></p>
+     {% empty %}
+         None
+     {% endfor %}
+
+
+
     {% endif %}
 
-
-
-<p><a href="{% url "tjadmin" %}">Admin</a></p>
 
 
 

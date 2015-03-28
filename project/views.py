@@ -1,6 +1,6 @@
 from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import render, redirect
-from django.views.generic import View
+from django.views.generic import View, DetailView
 from TJIPMS.views import LoginRequiredMixin
 from account.models import Teacher, Student
 from project.forms import ProposalForm
@@ -50,3 +50,12 @@ class ProposalCreateView(LoginRequiredMixin, View):
         else:
 
             return render(request, self.template_name, {'form': form})
+
+
+class ProjectDetailView(DetailView):
+    model = Project
+
+    # def get_context_data(self, **kwargs):
+    #     context = super(ProjectDetailView, self).get_context_data(**kwargs)
+    #
+    #     return context
