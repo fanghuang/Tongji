@@ -1,6 +1,6 @@
 import csv
 from django.contrib.auth.models import User
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
 from django.contrib.admin.views.decorators import staff_member_required

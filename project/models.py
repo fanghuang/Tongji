@@ -4,12 +4,12 @@ from django.utils.translation import ugettext_lazy as _
 
 
 class Project(models.Model):
-    SCHOOL = "A"
+    DEPARTMENT = "A"
     UNIVERSITY = "B"
     PROVINCE = "C"
     NATION = "D"
     TYPE_CHOICES = (
-        (SCHOOL, _('A. School')),
+        (DEPARTMENT, _('A. Department')),
         (UNIVERSITY, _('B. University')),
         (PROVINCE, _('C. Province')),
         (NATION, _('D. Nation')),
@@ -21,8 +21,11 @@ class Project(models.Model):
     members = models.ManyToManyField('account.Student', related_name="involved_project", db_constraint=False)
     teacher = models.ForeignKey('account.Teacher')
     type = models.CharField(max_length=1, choices=TYPE_CHOICES)
-    approved_time = models.DateTimeField()
-    finished_time = models.DateTimeField()
+    approved_time = models.DateTimeField(null=True)
+    finished_time = models.DateTimeField(null=True)
+
+    def __unicode__(self):
+        return self.title
 
 
 class Mark(models.Model):

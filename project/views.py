@@ -1,12 +1,13 @@
-from django.http import HttpResponse
-from django.shortcuts import render
+from django.core.exceptions import ObjectDoesNotExist
+from django.shortcuts import render, redirect
 from django.views.generic import View
 from TJIPMS.views import LoginRequiredMixin
+from account.models import Teacher, Student
 from project.forms import ProposalForm
+from project.models import Project
 
 
 class ProposalCreateView(LoginRequiredMixin, View):
-
     template_name = "project/create_proposal.html"
 
 
@@ -18,15 +19,34 @@ class ProposalCreateView(LoginRequiredMixin, View):
         form = ProposalForm(request.POST)
         if form.is_valid():
             title = form.cleaned_data['title']
-            leader = request.user.username
             member1 = form.cleaned_data['member1']
             member2 = form.cleaned_data['member2']
             type = form.cleaned_data['type']
-            instructor = form.cleaned_data['instructor']
+            instructor_name = form.cleaned_data['instructor']
             description = form.cleaned_data['description']
-            print leader
+            instructor, created = Teacher.objects.get_or_create(name=instructor_name)
+            project = Project(title=title, leader=request.user.student, type=type, description=description,
+                              teacher=instructor)
+            project.save()
 
-            return HttpResponse(form.cleaned_data)
+            if member1:
+                try:
+                    member1 = Student.objects.get(student_id=member1)
+
+                except ObjectDoesNotExist:
+                    pass
+                project.members.add(member1)
+            if member2:
+                try:
+                    member2 = Student.objects.get(student_id=member2)
+
+                except ObjectDoesNotExist:
+                    pass
+                project.members.add(member2)
+
+
+
+            return redirect('index')
         else:
 
             return render(request, self.template_name, {'form': form})

@@ -37,9 +37,12 @@ class Teacher(models.Model):
         (INSTRUCTOR, 'Instructor'),
 
     )
-
+    name = models.CharField(max_length=5)
     position = models.CharField(max_length=2,
                                 choices=POSITION_CHOICE,
-                                default=PROFESSOR)
-    phone = models.CharField(max_length=11)
-    email = models.EmailField()
+                                null=True)
+    phone = models.CharField(max_length=11, null=True)
+    email = models.EmailField(null=True)
+
+    def __unicode__(self):
+        return self.name

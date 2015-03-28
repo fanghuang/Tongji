@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-03-28 09:03+0000\n"
+"POT-Creation-Date: 2015-03-28 14:17+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -30,32 +30,32 @@ msgstr "简体中文"
 msgid "Proposal Title"
 msgstr "项目名称"
 
-#: project/forms.py:8
+#: project/forms.py:9
 msgid "Leader"
 msgstr "队长"
 
-#: project/forms.py:8 project/forms.py:9 project/forms.py:10
+#: project/forms.py:11 project/forms.py:14 project/forms.py:17
 msgid "Student ID"
 msgstr "学号"
 
-#: project/forms.py:9 project/forms.py:10
+#: project/forms.py:12 project/forms.py:15
 msgid "Member"
 msgstr "成员"
 
-#: project/forms.py:11
+#: project/forms.py:18
 msgid "Type"
 msgstr "类型"
 
-#: project/forms.py:13
+#: project/forms.py:20
 msgid "Instructor"
 msgstr "导师"
 
-#: project/forms.py:14
+#: project/forms.py:22
 msgid "Description"
 msgstr "描述"
 
 #: project/models.py:12
-msgid "A. School"
+msgid "A. Department"
 msgstr "A. 院级"
 
 #: project/models.py:13
@@ -110,14 +110,15 @@ msgstr "帐号设置"
 msgid "Log Out"
 msgstr "退出"
 
-#: templates/project/create_proposal.html:13
+#: templates/project/create_proposal.html:14
 msgid "New Proposal"
 msgstr "立项申请"
 
-#: templates/project/create_proposal.html:78
+#: templates/project/create_proposal.html:79
 msgid "Cancel"
 msgstr "取消"
 
-#: templates/project/create_proposal.html:79
+#: templates/project/create_proposal.html:80
 msgid "Submit"
 msgstr "提交"
+

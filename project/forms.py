@@ -8,7 +8,7 @@ class ProposalForm(forms.Form):
                             widget=forms.TextInput(attrs={'class': 'form-control'}))
     leader = forms.IntegerField(label=_("Leader"),
                                 widget=forms.TextInput(
-                                    attrs={'class': 'form-control', 'placeholder': _('Student ID'), 'readonly':""}))
+                                    attrs={'class': 'form-control', 'placeholder': _('Student ID'), 'readonly':True}))
     member1 = forms.IntegerField(label=_("Member"), required=False,
                                  widget=forms.TextInput(
                                      attrs={'class': 'form-control', 'placeholder': _('Student ID')}))
