@@ -7,7 +7,7 @@ from django.db.models.signals import post_save
 
 class Student(models.Model):
     user = models.OneToOneField('auth.User')
-    student_id = models.IntegerField()
+    student_id = models.IntegerField(primary_key=True)
     start_year = models.IntegerField()
     phone = models.CharField(max_length=11)
 

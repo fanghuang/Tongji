@@ -1,4 +1,6 @@
 from django.db import models
+from django.utils.translation import ugettext_lazy as _
+
 
 
 class Project(models.Model):
@@ -7,16 +9,16 @@ class Project(models.Model):
     PROVINCE = "C"
     NATION = "D"
     TYPE_CHOICES = (
-        (SCHOOL, 'A. School'),
-        (UNIVERSITY, 'B. University'),
-        (PROVINCE, 'C. Province'),
-        (NATION, 'D. Nation'),
+        (SCHOOL, _('A. School')),
+        (UNIVERSITY, _('B. University')),
+        (PROVINCE, _('C. Province')),
+        (NATION, _('D. Nation')),
     )
 
     title = models.CharField(max_length=50)
-    description = models.TextField()
     leader = models.ForeignKey("account.Student", related_name="leading_project")
-    members = models.ManyToManyField('account.Student', related_name="involved_project")
+    description = models.TextField()
+    members = models.ManyToManyField('account.Student', related_name="involved_project", db_constraint=False)
     teacher = models.ForeignKey('account.Teacher')
     type = models.CharField(max_length=1, choices=TYPE_CHOICES)
     approved_time = models.DateTimeField()

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-03-26 15:05+0000\n"
+"POT-Creation-Date: 2015-03-28 09:03+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,6 +25,50 @@ msgstr "英文"
 #: TJIPMS/settings.py:95
 msgid "Simplified Chinese"
 msgstr "简体中文"
+
+#: project/forms.py:7
+msgid "Proposal Title"
+msgstr "项目名称"
+
+#: project/forms.py:8
+msgid "Leader"
+msgstr "队长"
+
+#: project/forms.py:8 project/forms.py:9 project/forms.py:10
+msgid "Student ID"
+msgstr "学号"
+
+#: project/forms.py:9 project/forms.py:10
+msgid "Member"
+msgstr "成员"
+
+#: project/forms.py:11
+msgid "Type"
+msgstr "类型"
+
+#: project/forms.py:13
+msgid "Instructor"
+msgstr "导师"
+
+#: project/forms.py:14
+msgid "Description"
+msgstr "描述"
+
+#: project/models.py:12
+msgid "A. School"
+msgstr "A. 院级"
+
+#: project/models.py:13
+msgid "B. University"
+msgstr "B. 校级"
+
+#: project/models.py:14
+msgid "C. Province"
+msgstr "C. 省级"
+
+#: project/models.py:15
+msgid "D. Nation"
+msgstr "D. 国家级"
 
 #: templates/account/login.html:39
 msgid "Tongji University"
@@ -50,18 +94,30 @@ msgstr "记住我"
 msgid "Sign in"
 msgstr "登录"
 
-#: templates/base.html:39
+#: templates/base.html:33
 msgid "Tongji Innovation Management System"
 msgstr "同济大学创新项目管理系统"
 
-#: templates/base.html:51
+#: templates/base.html:50
 msgid "Profile"
 msgstr "个人信息"
 
-#: templates/base.html:52
+#: templates/base.html:51
 msgid "Account Settings"
 msgstr "帐号设置"
 
-#: templates/base.html:54
+#: templates/base.html:53
 msgid "Log Out"
 msgstr "退出"
+
+#: templates/project/create_proposal.html:13
+msgid "New Proposal"
+msgstr "立项申请"
+
+#: templates/project/create_proposal.html:78
+msgid "Cancel"
+msgstr "取消"
+
+#: templates/project/create_proposal.html:79
+msgid "Submit"
+msgstr "提交"

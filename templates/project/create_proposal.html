@@ -7,61 +7,84 @@
         <div class="col-lg-2"></div>
         <div class="col-lg-8 center-block">
         <div class="well bs-component">
-        <form class="form-horizontal">
+
+        <form action="." method="post" class="form-horizontal">
+        {% csrf_token %}
     	<fieldset>
-        <legend>New Proposal</legend>
-        <div class="form-group">
-            <label for="inputProposalName" class="col-lg-2 control-label">Proposal Name</label>
+        <legend>{% trans 'New Proposal' %}</legend>
+
+            {% for field in form %}
+                <div class="form-group">
+            <label for="{{ field.id_for_label}}" class="col-lg-2 control-label">{{ field.label }}</label>
             <div class="col-lg-10">
-                <input type="text" class="form-control" id="inputProposalName" placeholder="Proposal Name">
+                {{ field }}{{ field.errors }}
             </div>
         </div>
-        <div class="form-group">
-            <label for="inputLeader" class="col-lg-2 control-label">Leader</label>
-            <div class="col-lg-10">
-                <input type="text" class="form-control" id="inputLeader" placeholder="Leader">
-            </div>
-            <label for="inputMemberOne" class="col-lg-2 control-label">Member</label>
-            <div class="col-lg-10">
-                <input type="text" class="form-control" id="inputMemberOne" placeholder="Member">
-            </div>
-            <label for="inputMemberTwo" class="col-lg-2 control-label">Member</label>
-            <div class="col-lg-10">
-                <input type="text" class="form-control" id="inputMemberTwo" placeholder="Member">
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="select" class="col-lg-2 control-label">Type</label>
-            <div class="col-lg-10">
-                <select class="form-control" id="select">
-                    <option>School-level students ' science and technology innovation project</option>
-                    <option>University-level students ' science and technology innovation project</option>
-                    <option>Province-level students ' science and technology innovation project</option>
-                    <option>Nation-level students ' science and technology innovation project</option>
-                </select>
-            </div>
-        </div>
-        <div class="form-group">
-        	<label for="inputInstructor" class="col-lg-2 control-label">Instructor</label>
-        	<div class="col-lg-10">
-                <input type="text" class="form-control" id="inputInstructor" placeholder="Instructor">
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="textArea" class="col-lg-2 control-label">Description</label>
-            <div class="col-lg-10">
-                <textarea class="form-control" rows="3" id="textArea"></textarea>
-                <span class="help-block">Enter some descriptions of your project here.</span>
-            </div>
-        </div>
+            {% endfor %}
+
+
+{##}
+{#        <div class="form-group">#}
+{#            <label for="{{ form.title.id_for_label}}" class="col-lg-2 control-label">{% trans "Proposal Title" %}</label>#}
+{#            <div class="col-lg-10">#}
+{#                <input type="text" class="form-control" id="inputProposalName" placeholder="Proposal Name">#}
+{#                {{ form.title }}#}
+{#            </div>#}
+{#        </div>#}
+{#        <div class="form-group">#}
+{#            <label for="{{ form.leader.id_for_label}}" class="col-lg-2 control-label">{% trans "Leader" %}</label>#}
+{#            <div class="col-lg-10">#}
+{#                {{ form.leader }}#}
+{#                <input type="text" class="form-control" id="inputLeader" placeholder="Leader">#}
+{#            </div>#}
+{#            <label for="{{ form.member1.id_for_label}}" class="col-lg-2 control-label">{% trans "Member" %}</label>#}
+{#            <div class="col-lg-10">#}
+{#                <input type="text" class="form-control" id="inputMemberOne" placeholder="Member">#}
+{#                {{ form.member1 }}#}
+{#            </div>#}
+{#            <label for="{{ form.member2.id_for_label}}" class="col-lg-2 control-label">{% trans "Member" %}</label>#}
+{#            <div class="col-lg-10">#}
+{#                <input type="text" class="form-control" id="inputMemberTwo" placeholder="Member">#}
+{#                {{ form.member2 }}#}
+{#            </div>#}
+{#        </div>#}
+{#        <div class="form-group">#}
+{#            <label for="{{ form.type.id_for_label }}" class="col-lg-2 control-label">{% trans "Type" %}</label>#}
+{#            <div class="col-lg-10">#}
+{#                {{ form.type }}#}
+{#                <select class="form-control" id="select">#}
+{#                    <option>School-level students ' science and technology innovation project</option>#}
+{#                    <option>University-level students ' science and technology innovation project</option>#}
+{#                    <option>Province-level students ' science and technology innovation project</option>#}
+{#                    <option>Nation-level students ' science and technology innovation project</option>#}
+{#                </select>#}
+{#            </div>#}
+{#        </div>#}
+{#        <div class="form-group">#}
+{#        	<label for="inputInstructor" class="col-lg-2 control-label">{% trans "Instructor" %}</label>#}
+{#        	<div class="col-lg-10">#}
+{#                <input type="text" class="form-control" id="inputInstructor" placeholder="Instructor">#}
+{#            </div>#}
+{#        </div>#}
+{#        <div class="form-group">#}
+{#            <label for="{{ form.description.id_for_label }}" class="col-lg-2 control-label">{% trans "Description" %}</label>#}
+{#            <div class="col-lg-10">#}
+{#                <textarea class="form-control" rows="3" id="textArea"></textarea>#}
+{#                {{ form.description }}#}
+{#                <span class="help-block">Enter some descriptions of your project here.</span>#}
+{#            </div>#}
+{#        </div>#}
         <div class="form-group">
             <div class="col-lg-10 col-lg-offset-2">
-                <button class="btn btn-default">Cancel</button>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button class="btn btn-default">{% trans "Cancel" %}</button>
+                <button type="submit" class="btn btn-primary">{% trans "Submit" %}</button>
             </div>
         </div>
     	</fieldset>
 		</form>
+
+
+{#            {{ form.as_p }}#}
 		</div>
 		</div>
 		</div>
