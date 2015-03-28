@@ -9,7 +9,8 @@ class Student(models.Model):
     user = models.OneToOneField('auth.User')
     student_id = models.IntegerField(primary_key=True)
     start_year = models.IntegerField()
-    phone = models.CharField(max_length=11)
+    phone = models.CharField(max_length=11, null=True, blank=True)
+    email = models.EmailField(null=True, blank=True)
 
     @staticmethod
     def create_student(student_id, student_name, password, start_year):
