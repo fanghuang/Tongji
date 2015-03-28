@@ -17,8 +17,16 @@ class ProposalCreateView(LoginRequiredMixin, View):
     def post(self, request):
         form = ProposalForm(request.POST)
         if form.is_valid():
-            return HttpResponse('/thanks/')
+            title = form.cleaned_data['title']
+            leader = form.cleaned_data['leader']
+            member1 = form.cleaned_data['member1']
+            member2 = form.cleaned_data['member2']
+            type = form.cleaned_data['type']
+            instructor = form.cleaned_data['instructor']
+            description = form.cleaned_data['description']
+            print form.cleaned_data
+
+            return HttpResponse(form.cleaned_data)
         else:
-            print form.errors
-            
+
             return render(request, self.template_name, {'form': form})
