@@ -1,3 +1,10 @@
-from django.shortcuts import render
+from django.views.generic import ListView
+from TJIPMS.views import LoginRequiredMixin
+from announcement.models import Announcement
 
-# Create your views here.
+
+class AnnouncementListView(LoginRequiredMixin, ListView):
+    template_name = ""
+    model = Announcement
+
+

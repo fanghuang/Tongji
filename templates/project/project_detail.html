@@ -5,12 +5,13 @@
 {% block page %}
 
     <h1>{{ object.title }}</h1>
-<p>{{ object.leader }}</p>
-<p>{{ object.member }}</p>
+<p>leader: {{ object.leader }}</p>
 {#    <p>{{ object.members }}</p>#}
     {% for mem in object.members.all %}
-        {{ mem }}
+        <p>member:{{ mem }}</p>
     {% endfor %}
-    <p>{{ object.teacher }}</p>
-    <p>{{ object.type }}</p>
+    <p>teacher: {{ object.teacher }}</p>
+    <p>type: {{ object.get_type_display }}</p>
+    <p>description: </p>
+    <p>{{ object.description }}</p>
 {% endblock %}

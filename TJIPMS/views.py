@@ -17,8 +17,14 @@ class HomeView(LoginRequiredMixin, View):
 
     def get(self, request):
         user = request.user
-        leading_project = user.student.leading_project.all()
-        involved_project = user.student.involved_project.all()
+
+        leading_project = None
+        involved_project = None
+        try:
+            leading_project = user.student.leading_project.all()
+            involved_project = user.student.involved_project.all()
+        except:
+            pass
 
         return render(request, self.template_name,
                       {"leading_project": leading_project, "involved_project": involved_project})

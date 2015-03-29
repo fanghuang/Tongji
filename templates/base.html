@@ -18,12 +18,12 @@
       <link href="/static/material/css/material.min.css" rel="stylesheet">
       <link href="/static/material/css/ripples.min.css" rel="stylesheet">
 
-    <!-- Custom styles for this template -->
-    <link href="/static/base.css" rel="stylesheet">
+        <!-- Custom styles for this template -->
+        <link href="/static/base.css" rel="stylesheet">
 
 
     
-    <nav class="navbar navbar-inverse navbar-static-top">
+        <nav class="navbar navbar-inverse navbar-static-top">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-inverse-collapse">
                     <span class="icon-bar"></span>
@@ -34,14 +34,14 @@
             </div>
 
 
-    </head>
-    <body>
+
+
 
             <div class="navbar-collapse collapse navbar-inverse-collapse">
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="javascript:void(0)">Active</a></li>
-                    <li><a href="javascript:void(0)">Proposals</a></li>
-                    <li><a href="javascript:void(0)">News</a></li>
+                    <li><a href="{% url "create_proposal" %}">{% trans "Proposals" %}</a></li>
+                    <li><a href="{% url "announcement_list" %}">{% trans "Announcement" %}</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
@@ -55,7 +55,9 @@
                     </li>
                 </ul>
             </div>
-        </nav>
+            </nav>
+    </head>
+    <body>
     {% block page %}
 
     {% endblock page %}

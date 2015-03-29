@@ -1,4 +1,5 @@
 from django.conf.urls import patterns, url
+from django.core.urlresolvers import reverse_lazy
 from tjadmin import views
 
 
@@ -9,4 +10,6 @@ urlpatterns = patterns('',
                        url(r'^create_student/$', views.CreateStudentView.as_view(), name='tjadmin_create_student'),
                        url(r'^create_student/upload/$', views.UploadStudentView.as_view(), name='tjadmin_upload_student'),
                        url(r'^create_student/upload/confirmed/$', views.UploadStudentConfirmedView.as_view(), name='tjadmin_upload_student_confirmed'),
+                       url(r'^create_announcement/$', views.AnnouncementCreate.as_view(success_url=reverse_lazy('index')), name='tjadmin_create_announcement'),
+
                        )

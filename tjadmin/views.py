@@ -2,9 +2,10 @@ import csv
 from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, CreateView
 from django.contrib.admin.views.decorators import staff_member_required
 from account.models import Student
+from announcement.models import Announcement
 from tjadmin.forms import UploadFileForm
 
 
@@ -57,3 +58,9 @@ def parse_student_file(file):
     reader = csv.reader(file)
     stu_list = list(reader)
     return stu_list
+
+
+class AnnouncementCreate(StaffLoginRequiredMixin, CreateView):
+
+    template_name = "tjadmin/create_announcement.html"
+    model = Announcement

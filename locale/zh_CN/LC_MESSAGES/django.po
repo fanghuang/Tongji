@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-03-28 14:17+0000\n"
+"POT-Creation-Date: 2015-03-29 09:17+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,6 +25,22 @@ msgstr "英文"
 #: TJIPMS/settings.py:95
 msgid "Simplified Chinese"
 msgstr "简体中文"
+
+#: account/models.py:11
+msgid "Phone"
+msgstr "手机号码"
+
+#: account/models.py:12
+msgid "Email"
+msgstr "邮箱"
+
+#: announcement/models.py:6
+msgid "Title"
+msgstr "标题"
+
+#: announcement/models.py:8
+msgid "URL"
+msgstr "链接"
 
 #: project/forms.py:7
 msgid "Proposal Title"
@@ -98,6 +114,14 @@ msgstr "登录"
 msgid "Tongji Innovation Management System"
 msgstr "同济大学创新项目管理系统"
 
+#: templates/base.html:43
+msgid "Proposals"
+msgstr "立项"
+
+#: templates/base.html:44
+msgid "Announcement"
+msgstr "通知"
+
 #: templates/base.html:50
 msgid "Profile"
 msgstr "个人信息"
@@ -114,11 +138,10 @@ msgstr "退出"
 msgid "New Proposal"
 msgstr "立项申请"
 
-#: templates/project/create_proposal.html:79
+#: templates/project/create_proposal.html:26
 msgid "Cancel"
 msgstr "取消"
 
-#: templates/project/create_proposal.html:80
+#: templates/project/create_proposal.html:27
 msgid "Submit"
 msgstr "提交"
-

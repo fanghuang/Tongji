@@ -8,4 +8,5 @@ urlpatterns = patterns('',
                        url(r'^account/', include('account.urls')),
                        url(r'^tjadmin/', include('tjadmin.urls')),
                        url(r'^project/', include('project.urls')),
+                       url(r'^announcement/', include('announcement.urls'))
                        )

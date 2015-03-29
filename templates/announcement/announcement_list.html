@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+
+{% block page %}
+
+    {% for announcement in object_list %}
+    <li><a href="{{ announcement.url }}">{{ announcement }}</a></li>
+    {% empty %}
+    <li>No announcement yet.</li>
+    {% endfor %}
+
+
+
+{% endblock %}

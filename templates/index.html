@@ -22,7 +22,7 @@
 
       <h3>Involved project</h3>
      {% for ip in involved_project%}
-       <p><a href="{{ lp.get_absolute_url }}"> {{ ip }}</a></p>
+       <p><a href="{{ ip.get_absolute_url }}"> {{ ip }}</a></p>
      {% empty %}
          None
      {% endfor %}
