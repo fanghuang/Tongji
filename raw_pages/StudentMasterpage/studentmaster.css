@@ -5,3 +5,11 @@ body {
   padding: 40px 15px;
   text-align: center;
 }
+/*
+The beneath code changes the padding on the body so that the navbar does not overlap with the page content. 
+
+*/
+body { padding-top: 60px; }
+@media screen and (max-width: 1200px) {
+    body { padding-top: 50px; }
+}
