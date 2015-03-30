@@ -2,6 +2,7 @@ from django.contrib.auth import authenticate, login, update_session_auth_hash
 from django.contrib.auth.forms import PasswordChangeForm
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
+from django.utils import translation
 from django.views.generic import TemplateView, View, UpdateView
 from TJIPMS.views import LoginRequiredMixin
 from account.models import Student
@@ -14,8 +15,14 @@ class LoginView(TemplateView):
         student_id = request.POST['student_id']
         password = request.POST['password']
 
+        language = request.POST['language']
         remember_me = request.POST.getlist('remember_me')
-        user = authenticate(student_id=student_id,password = password)
+        user = authenticate(student_id=student_id, password=password)
+
+        if language == 'en' or language == 'zh-cn':
+            user_language = language
+            translation.activate(user_language)
+            request.session[translation.LANGUAGE_SESSION_KEY] = user_language
 
         if user is not None:
             if user.is_active:

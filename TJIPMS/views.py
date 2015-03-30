@@ -1,5 +1,6 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.utils import translation
 from django.views.generic import View
 
 from django.utils.translation import ugettext as _
@@ -28,3 +29,12 @@ class HomeView(LoginRequiredMixin, View):
 
         return render(request, self.template_name,
                       {"leading_project": leading_project, "involved_project": involved_project})
+
+
+def language_switch(request):
+    language = request.GET['code']
+    next = request.GET['next']
+    user_language = language
+    translation.activate(user_language)
+    request.session[translation.LANGUAGE_SESSION_KEY] = user_language
+    return redirect(next)
