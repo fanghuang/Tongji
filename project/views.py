@@ -1,4 +1,4 @@
-from django.core.exceptions import ObjectDoesNotExist
+from django.core.exceptions import ObjectDoesNotExist, PermissionDenied
 from django.shortcuts import render, redirect
 from django.views.generic import View, DetailView
 from TJIPMS.views import LoginRequiredMixin
@@ -55,7 +55,10 @@ class ProposalCreateView(LoginRequiredMixin, View):
 class ProjectDetailView(DetailView):
     model = Project
 
-    # def get_context_data(self, **kwargs):
-    #     context = super(ProjectDetailView, self).get_context_data(**kwargs)
-    #
-    #     return context
+    def get_object(self, *args, **kwargs):
+        project = super(ProjectDetailView, self).get_object(*args, **kwargs)
+        student = self.request.user.student
+        if project.leader != student and student not in project.members.all():
+            raise PermissionDenied()
+        else:
+            return project
