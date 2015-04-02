@@ -1,15 +1,15 @@
 from django.contrib.auth.models import User
 from django.db import models
+from django.utils.translation import ugettext_lazy as _
 
-# Create your models here.
-from django.db.models.signals import post_save
 
 
 class Student(models.Model):
     user = models.OneToOneField('auth.User')
-    student_id = models.IntegerField()
+    student_id = models.IntegerField(primary_key=True)
     start_year = models.IntegerField()
-    phone = models.CharField(max_length=11)
+    phone = models.CharField(max_length=11, null=True, blank=True, verbose_name=_("Phone"))
+    email = models.EmailField(null=True, blank=True, verbose_name=_("Email"))
 
     @staticmethod
     def create_student(student_id, student_name, password, start_year):
@@ -37,9 +37,12 @@ class Teacher(models.Model):
         (INSTRUCTOR, 'Instructor'),
 
     )
-
+    name = models.CharField(max_length=5)
     position = models.CharField(max_length=2,
                                 choices=POSITION_CHOICE,
-                                default=PROFESSOR)
-    phone = models.CharField(max_length=11)
-    email = models.EmailField()
+                                null=True)
+    phone = models.CharField(max_length=11, null=True)
+    email = models.EmailField(null=True)
+
+    def __unicode__(self):
+        return self.name

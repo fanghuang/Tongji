@@ -46,9 +46,14 @@
               </div>
               <div class="checkbox">
                 <label>
-                  <input type="checkbox" value="remember-me"> {% trans "Remember me" %}
+                  <input name="remember_me" type="checkbox" value="true"> {% trans "Remember me" %}
                 </label>
               </div>
+               <div class="radio radio-inline ">
+                    <label><input type="radio" checked="checked" name="language" value="zh-cn">中文</label>
+
+                  <label><input type="radio" name="language" value="en">English</label>
+                </div>
               <button class="btn btn-lg btn-primary btn-block" type="submit">{% trans "Sign in" %}</button>
             </form>
           </div>

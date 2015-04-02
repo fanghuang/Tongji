@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+
+{% block page %}
+
+    <h1>{{ object.title }}</h1>
+<p>leader: {{ object.leader }}</p>
+{#    <p>{{ object.members }}</p>#}
+    {% for mem in object.members.all %}
+        <p>member:{{ mem }}</p>
+    {% endfor %}
+    <p>teacher: {{ object.teacher }}</p>
+    <p>type: {{ object.get_type_display }}</p>
+    <p>description: </p>
+    <p>{{ object.description }}</p>
+{% endblock %}

@@ -18,44 +18,56 @@
       <link href="/static/material/css/material.min.css" rel="stylesheet">
       <link href="/static/material/css/ripples.min.css" rel="stylesheet">
 
-    <!-- Custom styles for this template -->
-    <link href="/static/base.css" rel="stylesheet">
+        <!-- Custom styles for this template -->
+        <link href="/static/base.css" rel="stylesheet">
 
 
     
-    <nav class="navbar navbar-inverse navbar-static-top">
+        <nav class="navbar navbar-inverse navbar-static-top">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-inverse-collapse">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="javascript:void(0)">{% trans "Tongji Innovation Management System"%}</a>
+                <a class="navbar-brand" href="{% url 'index' %}">{% trans "Tongji Innovation Management System"%}</a>
             </div>
 
 
-    </head>
-    <body>
+
+
 
             <div class="navbar-collapse collapse navbar-inverse-collapse">
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="javascript:void(0)">Active</a></li>
-                    <li><a href="javascript:void(0)">Proposals</a></li>
-                    <li><a href="javascript:void(0)">News</a></li>
+                    <li><a href="{% url "create_proposal" %}">{% trans "Proposals" %}</a></li>
+                    <li><a href="{% url "announcement_list" %}">{% trans "Announcement" %}</a></li>
                 </ul>
+
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
                         <a href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown">{{user.first_name }}<b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li><a href="javascript:void(0)">{% trans "Profile" %}</a></li>
-                            <li><a href="javascript:void(0)">{% trans "Account Settings" %}</a></li>
+                            <li><a href="{% url "profile" %}">{% trans "Profile" %}</a></li>
+                            <li><a href="{% url "setting" %}">{% trans "Account Settings" %}</a></li>
                             <li class="divider"></li>
-                            <li><a href="javascript:void(0)">{% trans "Log Out" %}</a></li>
+                            <li><a href="{% url "logout" %}">{% trans "Log Out" %}</a></li>
                         </ul>
                     </li>
                 </ul>
+                 <ul class="nav navbar-nav navbar-right">
+                     {% if LANGUAGE_CODE == 'en' %}
+                     <li><a href="{% url "language_switch" %}?code=zh-cn&next={{ request.get_full_path }}">中文</a></li>
+                     {% endif %}
+                    {% if LANGUAGE_CODE == 'zh-cn' %}
+                     <li><a href="{% url "language_switch" %}?code=en&next={{ request.get_full_path }}">English</a></li>
+                    {% endif %}
+
+                 </ul>
             </div>
-        </nav>
+            </nav>
+    </head>
+    <body>
     {% block page %}
 
     {% endblock page %}

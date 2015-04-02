@@ -96,7 +96,7 @@ LANGUAGES = (
 )
 
 LOCALE_PATHS = (
-     os.path.join(BASE_DIR, "locale"),
+    os.path.join(BASE_DIR, "locale"),
 )
 
 # Static files (CSS, JavaScript, Images)
@@ -111,10 +111,8 @@ STATICFILES_DIRS = (
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 TEMPLATE_DIRS = (
-    os.path.join(BASE_DIR,  'templates'),
+    os.path.join(BASE_DIR, 'templates'),
 )
-
-
 
 LOGIN_URL = '/account/login'
 
@@ -122,3 +120,13 @@ LOGIN_URL = '/account/login'
 # https://warehouse.python.org/project/whitenoise/
 
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+
+TEMPLATE_CONTEXT_PROCESSORS = ("django.contrib.auth.context_processors.auth",
+                               "django.core.context_processors.debug",
+                               "django.core.context_processors.i18n",
+                               "django.core.context_processors.media",
+                               "django.core.context_processors.static",
+                               "django.core.context_processors.tz",
+                               "django.contrib.messages.context_processors.messages",
+                               "django.core.context_processors.request",
+                               )
