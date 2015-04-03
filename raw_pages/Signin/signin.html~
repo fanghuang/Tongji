@@ -37,8 +37,7 @@
               <h3 class="form-signin-subheading">Innovation Management System</h3>
               <div id="idNumberGroup" class="form-group has-error">
                 <input type="text" id="inputIdNumber" class="form-control floating-label" placeholder="ID Number" required autofocus>
-	</div>
-	<br/>
+              </div>
               <div id="passwordGroup" class="form-group has-error">
                 <input type="password" id="inputPassword" class="form-control floating-label" placeholder="Password" required>
               </div>
@@ -46,8 +45,7 @@
                 <label>
                   <input type="checkbox" value="remember-me"> Remember me
                 </label>
-	</div>
-	<br/>
+              </div>
               <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
             </form>
           </div>
