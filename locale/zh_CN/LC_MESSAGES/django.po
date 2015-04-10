@@ -151,3 +151,6 @@ msgstr "主导项目"
 
 msgid "Involved Project"
 msgstr "参与项目"
+
+msgid "Update"
+msgstr "更新"
