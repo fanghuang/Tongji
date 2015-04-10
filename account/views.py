@@ -40,12 +40,12 @@ class LoginView(TemplateView):
         else:
             return render(request, "account/login.html", {'invalid': True})
 
-
+#individual profile and setting share same templates -- individual.html
 class ProfileView(LoginRequiredMixin, UpdateView):
 
     model = Student
     fields = ['phone', 'email']
-    template_name = "account/profile.html"
+    template_name = "account/individual.html"
 
     def get_object(self):
         return self.request.user.student
@@ -53,7 +53,7 @@ class ProfileView(LoginRequiredMixin, UpdateView):
 
 class SettingView(LoginRequiredMixin, View):
 
-    template_name = "account/setting.html"
+    template_name = "account/individual.html"
 
     def get(self, request):
         form = PasswordChangeForm(request.user)
