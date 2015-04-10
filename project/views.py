@@ -1,6 +1,6 @@
 from django.core.exceptions import ObjectDoesNotExist, PermissionDenied
 from django.shortcuts import render, redirect
-from django.views.generic import View, DetailView
+from django.views.generic import View, DetailView, UpdateView
 from TJIPMS.views import LoginRequiredMixin
 from account.models import Teacher, Student
 from project.forms import ProposalForm
@@ -62,3 +62,25 @@ class ProjectDetailView(DetailView):
             raise PermissionDenied()
         else:
             return project
+
+class ProjectUpdate(DetailView):
+    model = Project
+    model1 = Student
+    print "++++++++++++++++++++++"
+    print model.leader
+
+    print "++++++++++++++++++++++"
+    fields = ['title', 'leader', 'description', 'type']
+    template_name = "project/project_update.html"
+
+    def get_object(self):
+        print "================"
+        print self.request.user.first_name
+        print "================"
+        print self.request.user.id
+        print "================"
+        project = super(ProjectUpdate, self).get_object()
+        print project
+        print "================"
+        return self.request.user.student
+        
