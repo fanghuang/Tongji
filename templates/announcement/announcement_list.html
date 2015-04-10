@@ -7,11 +7,15 @@
     <div class="col-md-6 center-block">
         <div class="well bs-component">
             <legend>Announcement</legend>
-            {% for announcement in object_list %}
-		    <li><a href="{{ announcement.url }}">{{ announcement }}</a></li>
-		    {% empty %}
-		    <li>No announcement yet.</li>
-		    {% endfor %}
+            <div class="panel-group">
+                {% for announcement in object_list %}
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <h4><i class="mdi-action-assignment"></i>&nbsp;&nbsp;<a href="{{ announcement.url }}">{{ announcement }}</a></h4>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
         </div>
     </div>
 </div>
