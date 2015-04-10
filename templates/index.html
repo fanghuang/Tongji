@@ -26,23 +26,34 @@
                                 <form class="form-inline">
                                     <div class="form-group">
                                         <div class="input-group">
-                                            <form action="" method="post">
+                                            <form action="." method="post" class="form-horizontal">
                                                 {% csrf_token %}
-                                                {{ form.as_p }}
-                                                <input type="submit" value="Update" />
+                                                <fieldset>
+                                                    <div class="form-group">
+                                                        <label for="id_leader" class="col-md-4 control-label">Leader</label>
+                                                        <div class="col-md-8">
+                                                            <input class="form-control" id="id_leader" value="{{ lp.leader }}">
+                                                        </div>
+                                                        <label for="id_leader" class="col-md-4 control-label">Teacher</label>
+                                                        <div class="col-md-8">
+                                                            <input class="form-control" id="id_leader" value="{{ lp.teacher }}">
+                                                        </div>
+                                                        <label for="id_leader" class="col-md-4 control-label">Type</label>
+                                                        <div class="col-md-8">
+                                                            <input class="form-control" id="id_leader" value="{{ lp.get_type_display }}">
+                                                        </div>
+                                                        <label for="id_leader" class="col-md-4 control-label">Description</label>
+                                                        <div class="col-md-8">
+                                                            <textarea class="form-control" rows="3" id="textArea">{{ lp.description }}</textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="col-md-2 col-md-offset-10">
+                                                            <button type="submit" class="btn btn-primary">{% trans "Update" %}</button>
+                                                        </div>
+                                                    </div>
+                                                </fieldset>
                                             </form>
-                                            <li>Leader: {{ lp.leader }}</li>
-                                            <li>
-                                                Member: 
-                                                <ol>
-                                                    {% for mem in lp.members.all %}
-                                                    <li>{{ mem }}</li>
-                                                    {% endfor %}
-                                                </ol>
-                                            </li>
-                                            <li>Teacher: {{ lp.teacher }}</li>
-                                            <li>Type: {{ lp.get_type_display }}</li>
-                                            <li>Description: {{ lp.description }}</li>
                                         </div>
                                     </div>
                                 </form>

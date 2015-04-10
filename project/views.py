@@ -63,13 +63,11 @@ class ProjectDetailView(DetailView):
         else:
             return project
 
+#TODO
 class ProjectUpdate(DetailView):
     model = Project
     model1 = Student
-    print "++++++++++++++++++++++"
-    print model.leader
-
-    print "++++++++++++++++++++++"
+    
     fields = ['title', 'leader', 'description', 'type']
     template_name = "project/project_update.html"
 
