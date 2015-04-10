@@ -4,7 +4,7 @@ from django.utils.translation import ugettext_lazy as _
 
 
 class ProposalForm(forms.Form):
-    title = forms.CharField(label=_("Proposal Title"), max_length=50,
+    title = forms.CharField(label=_("Title"), max_length=50,
                             widget=forms.TextInput(attrs={'class': 'form-control'}))
     leader = forms.IntegerField(label=_("Leader"),
                                 widget=forms.TextInput(
