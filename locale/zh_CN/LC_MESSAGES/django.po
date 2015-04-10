@@ -56,7 +56,7 @@ msgstr "学号"
 
 #: project/forms.py:12 project/forms.py:15
 msgid "Member"
-msgstr "成员"
+msgstr "队员"
 
 #: project/forms.py:18
 msgid "Type"
@@ -145,3 +145,9 @@ msgstr "取消"
 #: templates/project/create_proposal.html:27
 msgid "Submit"
 msgstr "提交"
+
+msgid "Leading Project"
+msgstr "主导项目"
+
+msgid "Involved Project"
+msgstr "参与项目"

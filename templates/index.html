@@ -2,13 +2,12 @@
 {% load i18n %}
 
 {% block page %}
-
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-3"></div>
         <div class="col-md-3">
             <div class="well bs-component">
-                <h3>Leading Project</h3>
+                <legend>{% trans "Leading Project" %}</legend>
                 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                     {% for lp in leading_project%}
                     <div class="panel panel-default">
@@ -27,6 +26,7 @@
                                 <form class="form-inline">
                                     <div class="form-group">
                                         <div class="input-group">
+                                            
                                             <li>Leader: {{ lp.leader }}</li>
                                             <li>
                                                 Member: 
@@ -51,7 +51,7 @@
         </div>
         <div class="col-md-3">
             <div class="well bs-component">
-                <h3>Involved Project</h3>
+                <legend>{% trans "Involved Project" %}</legend>
                 <div class="panel-group" id="accordion1" role="tablist" aria-multiselectable="true">
                     {% for ip in involved_project%}
                     <div class="panel panel-default">
