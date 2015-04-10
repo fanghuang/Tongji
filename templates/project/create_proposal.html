@@ -1,35 +1,32 @@
 {% extends "base.html" %}
 {% load i18n %}
 
-
 {% block page %}
 <div class="row">
-        <div class="col-xs-3 col-md-3"></div>
-        <div class="col-xs-6 col-md-6 center-block">
+    <div class="col-xs-3 col-md-3"></div>
+    <div class="col-xs-6 col-md-6 center-block">
         <div class="well bs-component">
-
-        <form action="." method="post" class="form-horizontal">
-        {% csrf_token %}
-    	<fieldset>
-        <legend>{% trans 'New Proposal' %}</legend>
-
-            {% for field in form %}
-                <div class="form-group">
-            <label for="{{ field.id_for_label}}" class="col-lg-2 control-label">{{ field.label }}</label>
-            <div class="col-lg-8">
-                {{ field }}
-            </div>
+            <form action="." method="post" class="form-horizontal">
+                {% csrf_token %}
+                <fieldset>
+                    <legend>{% trans 'New Proposal' %}</legend>
+                    {% for field in form %}
+                    <div class="form-group">
+                        <label for="{{ field.id_for_label}}" class="col-lg-2 control-label">{{ field.label }}</label>
+                        <div class="col-lg-8">
+                            {{ field }}
+                        </div>
+                    </div>
+                    {% endfor %}
+                    <div class="form-group">
+                        <div class="col-lg-10 col-lg-offset-2">
+                            <button type="reset" class="btn btn-default" >{% trans "Cancel" %}</button>
+                            <button type="submit" class="btn btn-primary">{% trans "Submit" %}</button>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
         </div>
-            {% endfor %}
-        <div class="form-group">
-            <div class="col-lg-10 col-lg-offset-2">
-                <button type="reset" class="btn btn-default" >{% trans "Cancel" %}</button>
-                <button type="submit" class="btn btn-primary">{% trans "Submit" %}</button>
-            </div>
-        </div>
-    	</fieldset>
-		</form>
-        </div>
-		</div>
-		</div>
+    </div>
+</div>
 {% endblock %}
