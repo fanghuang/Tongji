@@ -1,0 +1,1 @@
+The folder 'Starter Template for Bootstrap_files'  is the exact same as the one in the StudentMasterpage folder. 
