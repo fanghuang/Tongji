@@ -2,35 +2,109 @@
 {% load i18n %}
 
 {% block page %}
-<h1>this is the homepage</h1>
 
- {% if not user.is_authenticated %}
-       <p><a href="{% url "login" %}">Login</a></p>
+{% if not user.is_authenticated %}
+<p><a href="{% url "login" %}">Login</a></p>
 
-    {% else %}
-     <p>name: {{ user.first_name }}</p>
-     <p>id: {{ user.username }}</p>
-     <p><a href="{% url "create_proposal" %}">create proposal</a></p>
-     <p>already Loged in</p>
-        <p><a href="{% url "logout" %}">logout</a></p>
-     <h3>Leading project</h3>
-     {% for lp in leading_project%}
-        <p><a href="{{ lp.get_absolute_url }}">{{ lp }}</a></p>
-     {% empty %}
-         None
-     {% endfor %}
+{% else %}
+<p>name: {{ user.first_name }}</p>
+<p>id: {{ user.username }}</p>
+<p><a href="{% url "create_proposal" %}">create proposal</a></p>
+<p>already Loged in</p>
+<p><a href="{% url "logout" %}">logout</a></p>
+{% endif %}
 
-      <h3>Involved project</h3>
-     {% for ip in involved_project%}
-       <p><a href="{{ ip.get_absolute_url }}"> {{ ip }}</a></p>
-     {% empty %}
-         None
-     {% endfor %}
-
-
-
-    {% endif %}
-
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-3">
+            <div class="well bs-component">
+                <h3>Leading Project</h3>
+                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                    {% for lp in leading_project%}
+                    <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="headingOne">
+                            <h4 class="panel-title">
+                                <div class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#lp{{ forloop.counter }}" aria-expanded="false" aria-controls="lp{{ forloop.counter }}">
+                                    {{ lp }}
+                                    <div class="icon-preview pull-right">
+                                        <i class="mdi-content-add-circle-outline"></i>
+                                    </div>
+                                </div>
+                            </h4>
+                        </div>
+                        <div id="lp{{ forloop.counter }}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                            <div class="panel-body">
+                                <form class="form-inline">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <li>Leader: {{ lp.leader }}</li>
+                                            <li>
+                                                Member: 
+                                                <ol>
+                                                    {% for mem in lp.members.all %}
+                                                    <li>{{ mem }}</li>
+                                                    {% endfor %}
+                                                </ol>
+                                            </li>
+                                            <li>Teacher: {{ lp.teacher }}</li>
+                                            <li>Type: {{ lp.get_type_display }}</li>
+                                            <li>Description: {{ lp.description }}</li>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="well bs-component">
+                <h3>Involved Project</h3>
+                <div class="panel-group" id="accordion1" role="tablist" aria-multiselectable="true">
+                    {% for ip in involved_project%}
+                    <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="headingOne">
+                            <h4 class="panel-title">
+                                <div class="collapsed" data-toggle="collapse" data-parent="#accordion1" href="#ip{{ forloop.counter }}" aria-expanded="false" aria-controls="ip{{ forloop.counter }}">
+                                    {{ ip }}
+                                    <div class="icon-preview pull-right">
+                                        <i class="mdi-content-add-circle-outline"></i>
+                                    </div>
+                                </div>
+                            </h4>
+                        </div>
+                        <div id="ip{{ forloop.counter }}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                            <div class="panel-body">
+                                <form class="form-inline">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <li>Leader: {{ ip.leader }}</li>
+                                            <li>
+                                                Member: 
+                                                <ol>
+                                                    {% for mem in ip.members.all %}
+                                                    <li>{{ mem }}</li>
+                                                    {% endfor %}
+                                                </ol>
+                                            </li>
+                                            <li>Teacher: {{ ip.teacher }}</li>
+                                            <li>Type: {{ ip.get_type_display }}</li>
+                                            <li>Description: {{ ip.description }}</li>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 
