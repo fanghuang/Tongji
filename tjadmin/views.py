@@ -62,6 +62,6 @@ def parse_student_file(file):
 
 
 class AnnouncementCreate(StaffLoginRequiredMixin, CreateView):
-
-    template_name = "tjadmin/create_announcement.html"
     model = Announcement
+    template_name = "tjadmin/create_announcement.html"
+    
