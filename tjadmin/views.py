@@ -33,6 +33,7 @@ class CreateStudentView(StaffLoginRequiredMixin, TemplateView):
         password = request.POST['password']
         start_year = request.POST['start_year']
         student = Student.create_student(student_id, name, password, start_year)
+        #TODO
         return HttpResponse(str(student) + " created")
 
 

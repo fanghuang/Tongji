@@ -173,3 +173,10 @@ msgstr "学生姓名"
 msgid "Start Year"
 msgstr "入学年份"
 
+msgid "Upload"
+msgstr "上传"
+
+msgid "Select file to upload"
+msgstr "选择文件上传"
+
+
