@@ -5,6 +5,7 @@ from django.shortcuts import redirect, render
 from django.utils import translation
 from django.views.generic import TemplateView, View, UpdateView
 from TJIPMS.views import LoginRequiredMixin
+from tjadmin.views import StaffLoginRequiredMixin
 from account.models import Student
 
 
@@ -67,3 +68,8 @@ class SettingView(LoginRequiredMixin, View):
             return redirect("index")
         else:
             return render(request, self.template_name, {'form': form})
+
+class SuperuserView(StaffLoginRequiredMixin, TemplateView):
+
+    template_name = "tjadmin/tjadmin.html"
+        

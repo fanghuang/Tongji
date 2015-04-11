@@ -154,3 +154,22 @@ msgstr "参与项目"
 
 msgid "Update"
 msgstr "更新"
+
+msgid "Super User"
+msgstr "超级用户"
+
+msgid "Create Student"
+msgstr "新建学生账号"
+
+msgid "Upload Student List"
+msgstr "上传学生名单"
+
+msgid "Create Announcement"
+msgstr "超级用户"
+
+msgid "Student Name"
+msgstr "学生姓名"
+
+msgid "Start Year"
+msgstr "入学年份"
+

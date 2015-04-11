@@ -42,6 +42,9 @@
                             <ul class="dropdown-menu">
                                 <li><a href="{% url "profile" %}">{% trans "Profile" %}</a></li>
                                 <li><a href="{% url "setting" %}">{% trans "Account Settings" %}</a></li>
+                                {% if user.is_superuser %}
+                                <li><a href="{% url "superuser" %}">{% trans "Super User" %}</a></li>
+                                {% endif %}
                                 <li class="divider"></li>
                                 <li><a href="{% url "logout" %}">{% trans "Log Out" %}</a></li>
                             </ul>
