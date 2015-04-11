@@ -165,7 +165,7 @@ msgid "Upload Student List"
 msgstr "上传学生名单"
 
 msgid "Create Announcement"
-msgstr "超级用户"
+msgstr "新建通知"
 
 msgid "Student Name"
 msgstr "学生姓名"
@@ -179,4 +179,6 @@ msgstr "上传"
 msgid "Select file to upload"
 msgstr "选择文件上传"
 
+msgid "Create"
+msgstr "新建"
 
