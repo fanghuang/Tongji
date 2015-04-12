@@ -44,6 +44,8 @@ class ProposalCreateView(LoginRequiredMixin, View):
                     pass
                 project.members.add(member2)
 
+
+
             return redirect('index')
         else:
 
@@ -79,4 +81,4 @@ class ProjectUpdate(DetailView):
         print project
         print "================"
         return self.request.user.student
-        
+
