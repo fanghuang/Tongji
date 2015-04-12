@@ -13,11 +13,15 @@ class Student(models.Model):
 
     @staticmethod
     def create_student(student_id, student_name, password, start_year):
-        user = User.objects.create_user(username=student_id, password=password)
-        user.first_name = student_name
-        user.save()
-        student = Student.objects.create(user=user, student_id=student_id, start_year = start_year)
-        return student
+        if (User.objects.filter(username=student_id).count()):
+            student = Student.objects.get(student_id=student_id)
+            return student
+        else:
+            user = User.objects.create_user(username=student_id, password=password)
+            user.first_name = student_name
+            user.save()
+            student = Student.objects.create(user=user, student_id=student_id, start_year = start_year)
+            return student
 
     def __unicode__(self):
         return self.user.first_name

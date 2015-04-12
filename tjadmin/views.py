@@ -9,7 +9,7 @@ from announcement.models import Announcement
 from tjadmin.forms import UploadFileForm
 # from tjadmin.form import ProjectSearchForm
 from project.models import Project
-from account.models import Teacher
+from account.models import Teacher, Student
 
 
 class StaffLoginRequiredMixin(object):
@@ -83,11 +83,19 @@ class ProjectListView(StaffLoginRequiredMixin, TemplateView):
     template_name = "tjadmin/search_project_list.html"
 
 
-
+#update user table instead of student table
 def parse_student_file(file):
+    #Or csv.DictReader
     reader = csv.reader(file)
-    stu_list = list(reader)
-    return stu_list
+    #Skip the header
+    next(reader)
+    for row in reader:
+        student_id = row[0]
+        student_name = row[1]
+        password = row[2]
+        start_year = row[3]
+        Student.create_student(student_id, student_name, password, start_year)
+    return ["DONE!"]
 
 
 class AnnouncementCreate(StaffLoginRequiredMixin, CreateView):

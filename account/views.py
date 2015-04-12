@@ -11,15 +11,15 @@ from account.models import Student
 
 class LoginView(TemplateView):
     template_name = "account/login.html"
-
+    #TODO why user is none? 
     def post(self, request):
         student_id = request.POST['student_id']
         password = request.POST['password']
-
+        print student_id, password
         language = request.POST['language']
         remember_me = request.POST.getlist('remember_me')
         user = authenticate(student_id=student_id, password=password)
-
+        print user
         if language == 'en' or language == 'zh-cn':
             user_language = language
             translation.activate(user_language)

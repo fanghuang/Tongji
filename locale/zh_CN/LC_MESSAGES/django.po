@@ -194,3 +194,5 @@ msgstr "选择文件上传"
 msgid "Create"
 msgstr "新建"
 
+msgid "example_student_list"
+msgstr "学生名单实例"
