@@ -80,7 +80,7 @@ class ProjectSearchView(StaffLoginRequiredMixin, TemplateView):
 
 
 class ProjectListView(StaffLoginRequiredMixin, TemplateView):
-    template_name = "tjadmin/search_project_list,html"
+    template_name = "tjadmin/search_project_list.html"
 
 
 
