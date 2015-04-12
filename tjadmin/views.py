@@ -7,6 +7,7 @@ from django.contrib.admin.views.decorators import staff_member_required
 from account.models import Student
 from announcement.models import Announcement
 from tjadmin.forms import UploadFileForm
+from project.models import Project
 
 
 class StaffLoginRequiredMixin(object):
@@ -64,4 +65,8 @@ def parse_student_file(file):
 class AnnouncementCreate(StaffLoginRequiredMixin, CreateView):
     model = Announcement
     template_name = "tjadmin/create_announcement.html"
-    
+
+
+class ProjectSearch(StaffLoginRequiredMixin, TemplateView):
+
+    template_name = "tjadmin/search_project.html"

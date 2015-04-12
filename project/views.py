@@ -44,8 +44,6 @@ class ProposalCreateView(LoginRequiredMixin, View):
                     pass
                 project.members.add(member2)
 
-
-
             return redirect('index')
         else:
 

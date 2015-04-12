@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block page %}
+
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6 center-block">
+        <div class="well bs-component">
+            <legend>{% trans "Search Project" %}</legend>
+            <form action="" method="post" class="form-horizontal">
+                {% csrf_token %}
+                <fieldset>
+                    <div class="form-group">
+                        <label for="title" class="col-lg-2 control-label">{% trans "Title" %}</label>
+                        <div class="col-lg-8">
+                            <input name="title" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="teacher" class="col-lg-2 control-label">{% trans "Teacher" %}</label>
+                        <div class="col-lg-8">
+                            <input name="teacher" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="leader" class="col-lg-2 control-label">{% trans "Leader" %}</label>
+                        <div class="col-lg-8">
+                            <input name="leader" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="type" class="col-lg-2 control-label">{% trans "Type" %}</label>
+                        <div class="col-lg-8">
+                            <input name="type" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="approved_time" class="col-lg-2 control-label">{% trans "Approved Time" %}</label>
+                        <div class="col-lg-8">
+                            <input name="approved_time" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="finished_time" class="col-lg-2 control-label">{% trans "Finished Time" %}</label>
+                        <div class="col-lg-8">
+                            <input name="finished_time" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-10 col-lg-offset-2">
+                            <button type="submit" class="btn btn-primary">{% trans "Search" %}</button>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    {% for field in form %}
+    $(document).ready(function(){
+        $("#{{ field.id_for_label }}").addClass("form-control");
+    });
+    {% endfor %}
+</script>
+{% endblock %}

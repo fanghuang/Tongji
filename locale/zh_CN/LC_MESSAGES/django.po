@@ -176,6 +176,18 @@ msgstr "入学年份"
 msgid "Upload"
 msgstr "上传"
 
+msgid "Search"
+msgstr "查找"
+
+msgid "Search Project"
+msgstr "项目搜索"
+
+msgid "Approved Time"
+msgstr "立项时间"
+
+msgid "Finished Time"
+msgstr "结题时间"
+
 msgid "Select file to upload"
 msgstr "选择文件上传"
 
