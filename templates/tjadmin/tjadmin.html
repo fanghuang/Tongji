@@ -16,6 +16,17 @@
                     <a class="btn btn-primary btn-raised" href="{% url "tjadmin_create_announcement" %}">{% trans "Create Announcement" %}</a>
                     <a class="btn btn-primary btn-raised" href="{% url "tjadmin_search_project" %}">{% trans "Search Project" %}</a
                 </div>
+
+                <div class="">
+                    <form action="/tjadmin/simpleSearch" method="post" class="form-horizontal">
+                         <div class="form-group">
+                             <div class="col-lg-6">
+                                 <input name="simple_search" class="form-control">
+                                 <button type="submit" class="btn btn-primary">{% trans "Search" %}</button>
+                             </div>
+                         </div>
+                    </form>
+                </div>
             </div>
         </div>
     {% endif %}

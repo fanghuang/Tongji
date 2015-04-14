@@ -4,12 +4,13 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView, CreateView
 from django.contrib.admin.views.decorators import staff_member_required
-from account.models import Student
 from announcement.models import Announcement
 from tjadmin.forms import UploadFileForm
-# from tjadmin.form import ProjectSearchForm
+#from tjadmin.forms import ProjectSearchForm
 from project.models import Project
 from account.models import Teacher, Student
+from django.db import connection, transaction
+
 
 
 class StaffLoginRequiredMixin(object):
@@ -50,7 +51,7 @@ class UploadStudentView(StaffLoginRequiredMixin, TemplateView):
             student_list = parse_student_file(student_file)
             return render(request, "tjadmin/upload_student_confirm.html", {'student_list': student_list})
         else:
-            return redirect("tjadmin_upload_student")
+            return redirect("tjadmin")
 
 
 class UploadStudentConfirmedView(StaffLoginRequiredMixin, TemplateView):
@@ -75,9 +76,21 @@ class ProjectSearchView(StaffLoginRequiredMixin, TemplateView):
                                          # approved_time=approved, finished_time=finished)
         for project in projects:
             print project.title
-
         return render(request, "tjadmin/search_project_list.html", {'project_list': projects})
 
+    def simpleSearch(self, request):
+        text = request.POST['simple_search']
+#        cursor = connection.cursor()
+#        sql = "select * from PROJECT where balbalbalaablabalbal"
+        q1 = Project.objects.filter(leader__icontains=text)
+        q2 = Project.objects.filter(title__icontains=text)
+        q3 = Project.objects.filter(teacher__icontains=text)
+        q4 = Project.objects.filter(type__icontains=text)
+        projects = q1+q2+q3+q4
+        if projects:
+            return redirect("tjadmin_upload_student")
+        else:
+            return render(request, "tjadmin/search_project_list.html", {'project_list': projects})
 
 class ProjectListView(StaffLoginRequiredMixin, TemplateView):
     template_name = "tjadmin/search_project_list.html"
