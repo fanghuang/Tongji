@@ -1,7 +1,7 @@
 # Tongji
 
 Latest running version [here](https://tongji.herokuapp.com/)
-
+Also in [here](http://pht.csse.rose-hulman.edu:8000/) 
 
 ## Setup
 
