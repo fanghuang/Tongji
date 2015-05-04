@@ -10,4 +10,5 @@ urlpatterns = patterns('',
 	url(r'^project/', include('project.urls')),
 	url(r'^announcement/', include('announcement.urls')),
 	url(r'^i18n', views.language_switch, name="language_switch"),
+	url(r'^delete_post/$', views.delete_post, name="delete_post"),
 )

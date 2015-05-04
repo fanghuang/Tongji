@@ -10,7 +10,7 @@
                 <legend>{% trans "Leading Project" %}</legend>
                 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                     {% for lp in leading_project%}
-                    <div class="panel panel-default">
+                    <div class="panel panel-default" id="post-{{lp.id}}">
                         <div class="panel-heading" role="tab" id="headingOne">
                             <h4 class="panel-title">
                                 <div class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#lp{{ forloop.counter }}" aria-expanded="false" aria-controls="lp{{ forloop.counter }}">
@@ -48,8 +48,13 @@
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
-                                                        <div class="col-md-2 col-md-offset-10">
-                                                            <button type="submit" class="btn btn-primary">{% trans "Update" %}</button>
+                                                        <div class="col-md-2">
+                                                            <button id="update-{{ lp.id }}"  class="btn btn-primary">{% trans "Update" %}</button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="col-md-2">
+                                                            <button id="delete-{{ lp.id }}" class="btn btn-danger">{% trans "Delete" %}</button>
                                                         </div>
                                                     </div>
                                                 </fieldset>
@@ -97,6 +102,7 @@
                                             <li>Teacher: {{ ip.teacher }}</li>
                                             <li>Type: {{ ip.get_type_display }}</li>
                                             <li>Description: {{ ip.description }}</li>
+                                            <a id='delete-post'>delete me</a>
                                         </div>
                                     </div>
                                 </form>
@@ -111,5 +117,5 @@
 </div>
 
 
-
+<script src="/static/js/main.js"></script>
 {% endblock %}

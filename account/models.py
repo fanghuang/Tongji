@@ -24,7 +24,9 @@ class Student(models.Model):
             return student
 
     def __unicode__(self):
-        return self.user.first_name
+        return str(self.student_id)
+        # TODO idk why i cant return user.first_name
+        # return self.user.first_name
 
 
 

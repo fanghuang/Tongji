@@ -5,6 +5,13 @@ from django.views.generic import View
 
 from django.utils.translation import ugettext as _
 
+from django.http import HttpResponse
+from django.http.request import (HttpRequest, QueryDict,
+    RawPostDataException, UnreadablePostError, build_request_repr)
+
+from project.models import Project
+
+import json
 
 class LoginRequiredMixin(object):
     @classmethod
@@ -38,3 +45,23 @@ def language_switch(request):
     translation.activate(user_language)
     request.session[translation.LANGUAGE_SESSION_KEY] = user_language
     return redirect(next)
+
+def delete_post(request):
+    if request.method == 'DELETE':
+
+        post = Project.objects.get(id=int(QueryDict(request.body).get('postpk')))
+
+        post.delete()
+
+        response_data = {}
+        response_data['msg'] = 'Project was deleted.'
+
+        return HttpResponse(
+            json.dumps(response_data),
+            content_type="application/json"
+        )
+    else:
+        return HttpResponse(
+            json.dumps({"nothing to see": "this isn't happening"}),
+            content_type="application/json"
+        )
