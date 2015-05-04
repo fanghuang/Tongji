@@ -16,7 +16,14 @@
                                 <div class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#lp{{ forloop.counter }}" aria-expanded="false" aria-controls="lp{{ forloop.counter }}">
                                     {{ lp }}
                                     <div class="icon-preview pull-right">
-                                        <p class="text-muted">{% trans "Status" %}</p>
+                                        {% if lp.status == "PENDING" %}
+                                            {# <p class="text-muted">{% trans "Status" %}</p> #}
+                                            <p class="text-muted">{% trans "PENDING" %}</p>
+                                        {% elif lp.status == "APPROVED" %}
+                                            <p class="text-success">{% trans "APPROVED" %}</p>
+                                        {% else%}
+                                            <p class="text-danger">{% trans "REJECTED" %}</p>
+                                        {% endif%}
                                     </div>
                                 </div>
                             </h4>

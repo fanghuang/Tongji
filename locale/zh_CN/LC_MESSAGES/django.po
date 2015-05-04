@@ -196,3 +196,12 @@ msgstr "新建"
 
 msgid "example_student_list"
 msgstr "学生名单实例"
+
+msgid "PENDING"
+msgstr "待批"
+
+msgid "APPROVED"
+msgstr "通过"
+
+msgid "REJECTED"
+msgstr "否决"

@@ -15,14 +15,22 @@ class Project(models.Model):
         (NATION, _('D. Nation')),
     )
 
+    STATUS_CHOICES = (
+        ("PENDING", _('A. PENDING')),
+        ("APPROVED", _('B. APPROVED')),
+        ("REJECTED", _('C. REJECTED')),
+    )  
+
     title = models.CharField(max_length=50)
     leader = models.ForeignKey("account.Student", related_name="leading_project")
     description = models.TextField()
     members = models.ManyToManyField('account.Student', related_name="involved_project", db_constraint=False)
     teacher = models.ForeignKey('account.Teacher')
     type = models.CharField(max_length=1, choices=TYPE_CHOICES)
+    #TODO do we need approved_time & finished_time
     approved_time = models.DateTimeField(null=True)
     finished_time = models.DateTimeField(null=True)
+    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default="PENDING")
 
     def __unicode__(self):
         return self.title
