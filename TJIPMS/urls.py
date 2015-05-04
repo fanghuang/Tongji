@@ -11,4 +11,5 @@ urlpatterns = patterns('',
 	url(r'^announcement/', include('announcement.urls')),
 	url(r'^i18n', views.language_switch, name="language_switch"),
 	url(r'^delete_post/$', views.delete_post, name="delete_post"),
+	url(r'^update_post/$', views.update_post, name="update_post"),
 )

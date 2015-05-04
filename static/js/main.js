@@ -37,7 +37,33 @@ function create_post() {
 $("#accordion").on('click', 'button[id^=update-]', function(event){
     event.preventDefault();
     console.log("update "+$(this).attr('id').split('-')[1]);
+    project_id = $(this).attr('id').split('-')[1];
+    update_post(project_id);
 });
+
+function update_post(project_id){
+    console.log("update_post is working")
+    $.ajax({
+        url : "update_post/", // the endpoint
+        type : "POST", // http method
+        data : {postpk : project_id,
+                the_post : $('#description-'+project_id).val() }, // data sent with the delete request
+        success : function(json) {
+            alert('Updated!');
+            console.log(json); // log the returned json to the console
+          // $('#post-'+project_id).hide(); // hide the post on success
+            console.log("post update successful");
+        },
+        error : function(xhr,errmsg,err) {
+            // Show an error
+            // $('#results').html("<div class='alert-box alert radius' data-alert>"+
+            // "Oops! We have encountered an error. <a href='#' class='close'>&times;</a></div>"); // add error to the dom
+            // console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
+            console.log("BAD BAD BAD")
+        }
+    });
+};
+
 $("#accordion").on('click', 'button[id^=delete-]', function(event){
     event.preventDefault();
     console.log("delete "+$(this).attr('id').split('-')[1]);
@@ -69,6 +95,8 @@ function delete_post(project_id){
         return false;
     }
 };
+
+
 // nothing
 // This function gets cookie with a given name
 function getCookie(name) {

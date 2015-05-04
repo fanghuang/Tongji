@@ -46,6 +46,28 @@ def language_switch(request):
     request.session[translation.LANGUAGE_SESSION_KEY] = user_language
     return redirect(next)
 
+def update_post(request):
+    if request.method == 'POST':
+        post_text = request.POST.get('the_post')
+        response_data = {}
+        post = Project.objects.get(id=int(QueryDict(request.body).get('postpk')))
+        post.description = post_text
+        post.save()
+        # Project.objects.filter(id=int(QueryDict(request.body).get('postpk'))).update(description=post_text)
+
+        response_data['result'] = 'Create post successful!'
+        response_data['text'] = post.description
+
+        return HttpResponse(
+            json.dumps(response_data),
+            content_type="application/json"
+        )
+    else:
+        return HttpResponse(
+            json.dumps({"nothing to see": "this isn't happening"}),
+            content_type="application/json"
+        )
+
 def delete_post(request):
     if request.method == 'DELETE':
 
