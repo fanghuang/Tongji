@@ -87,7 +87,14 @@
                                 <div class="collapsed" data-toggle="collapse" data-parent="#accordion1" href="#ip{{ forloop.counter }}" aria-expanded="false" aria-controls="ip{{ forloop.counter }}">
                                     {{ ip }}
                                     <div class="icon-preview pull-right">
-                                        <i class="mdi-content-add-circle-outline"></i>
+                                        {% if ip.status == "PENDING" %}
+                                            {# <p class="text-muted">{% trans "Status" %}</p> #}
+                                            <p class="text-muted">{% trans "PENDING" %}</p>
+                                        {% elif ip.status == "APPROVED" %}
+                                            <p class="text-success">{% trans "APPROVED" %}</p>
+                                        {% else%}
+                                            <p class="text-danger">{% trans "REJECTED" %}</p>
+                                        {% endif%}
                                     </div>
                                 </div>
                             </h4>
@@ -97,19 +104,29 @@
                                 <form class="form-inline">
                                     <div class="form-group">
                                         <div class="input-group">
-                                            <li>Leader: {{ ip.leader }}</li>
-                                            <li>
-                                                Member: 
-                                                <ol>
-                                                    {% for mem in ip.members.all %}
-                                                    <li>{{ mem }}</li>
-                                                    {% endfor %}
-                                                </ol>
-                                            </li>
-                                            <li>Teacher: {{ ip.teacher }}</li>
-                                            <li>Type: {{ ip.get_type_display }}</li>
-                                            <li>Description: {{ ip.description }}</li>
-                                            <a id='delete-post'>delete me</a>
+                                            <form action="." method="post" class="form-horizontal">
+                                                {% csrf_token %}
+                                                <fieldset>
+                                                    <div class="form-group">
+                                                        <label for="id_leader" class="col-md-4 control-label">Leader</label>
+                                                        <div class="col-md-8">
+                                                            <input class="form-control" id="id_leader" value="{{ ip.leader }}">
+                                                        </div>
+                                                        <label for="id_leader" class="col-md-4 control-label">Teacher</label>
+                                                        <div class="col-md-8">
+                                                            <input class="form-control" id="id_leader" value="{{ ip.teacher }}">
+                                                        </div>
+                                                        <label for="id_leader" class="col-md-4 control-label">Type</label>
+                                                        <div class="col-md-8">
+                                                            <input class="form-control" id="id_leader" value="{{ ip.get_type_display }}">
+                                                        </div>
+                                                        <label for="id_leader" class="col-md-4 control-label">Description</label>
+                                                        <div class="col-md-8">
+                                                            <textarea class="form-control" rows="3" id="description-{{ ip.id }}">{{ ip.description }}</textarea>
+                                                        </div>
+                                                    </div>
+                                                </fieldset>
+                                            </form>
                                         </div>
                                     </div>
                                 </form>
