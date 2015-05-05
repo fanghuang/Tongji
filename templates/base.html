@@ -35,6 +35,9 @@
                     <ul class="nav navbar-nav">
                         <li><a href="{% url "create_proposal" %}">{% trans "Proposals" %}</a></li>
                         <li><a href="{% url "announcement_list" %}">{% trans "Announcement" %}</a></li>
+                        {% if user.is_superuser %}
+                        <li><a href="{% url "search_list" %}">{% trans "Search" %}</a></li>
+                        {% endif %}
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown">
