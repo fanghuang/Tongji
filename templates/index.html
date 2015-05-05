@@ -39,15 +39,15 @@
                                                     <div class="form-group">
                                                         <label for="id_leader" class="col-md-4 control-label">Leader</label>
                                                         <div class="col-md-8">
-                                                            <input class="form-control" id="id_leader" value="{{ lp.leader }}">
+                                                            <input class="form-control" id="leader-{{ lp.id }}" value="{{ lp.leader }}">
                                                         </div>
                                                         <label for="id_leader" class="col-md-4 control-label">Teacher</label>
                                                         <div class="col-md-8">
-                                                            <input class="form-control" id="id_leader" value="{{ lp.teacher }}">
+                                                            <input class="form-control" id="teacher-{{ lp.id }}" value="{{ lp.teacher }}">
                                                         </div>
                                                         <label for="id_leader" class="col-md-4 control-label">Type</label>
                                                         <div class="col-md-8">
-                                                            <input class="form-control" id="id_leader" value="{{ lp.get_type_display }}">
+                                                            <input class="form-control" id="type-{{ lp.id }}" value="{{ lp.get_type_display }}">
                                                         </div>
                                                         <label for="id_leader" class="col-md-4 control-label">Description</label>
                                                         <div class="col-md-8">
@@ -110,15 +110,15 @@
                                                     <div class="form-group">
                                                         <label for="id_leader" class="col-md-4 control-label">Leader</label>
                                                         <div class="col-md-8">
-                                                            <input class="form-control" id="id_leader" value="{{ ip.leader }}">
+                                                            <input class="form-control" id="leader-{{ ip.id }}" value="{{ ip.leader }}">
                                                         </div>
                                                         <label for="id_leader" class="col-md-4 control-label">Teacher</label>
                                                         <div class="col-md-8">
-                                                            <input class="form-control" id="id_leader" value="{{ ip.teacher }}">
+                                                            <input class="form-control" id="teacher-{{ ip.id }}" value="{{ ip.teacher }}">
                                                         </div>
                                                         <label for="id_leader" class="col-md-4 control-label">Type</label>
                                                         <div class="col-md-8">
-                                                            <input class="form-control" id="id_leader" value="{{ ip.get_type_display }}">
+                                                            <input class="form-control" id="type-{{ ip.id }}" value="{{ ip.get_type_display }}">
                                                         </div>
                                                         <label for="id_leader" class="col-md-4 control-label">Description</label>
                                                         <div class="col-md-8">

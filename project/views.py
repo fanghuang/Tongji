@@ -5,7 +5,13 @@ from TJIPMS.views import LoginRequiredMixin
 from account.models import Teacher, Student
 from project.forms import ProposalForm
 from project.models import Project
+from django.http import HttpResponse
+from django.http.request import (HttpRequest, QueryDict,
+    RawPostDataException, UnreadablePostError, build_request_repr)
 
+from project.models import Project
+
+import json
 
 class ProposalCreateView(LoginRequiredMixin, View):
     template_name = "project/create_proposal.html"
@@ -62,6 +68,63 @@ class ProjectDetailView(DetailView):
             raise PermissionDenied()
         else:
             return project
+
+
+class ProjectSearchingView(DetailView):
+    template_name = "project/search_list.html"
+
+    def get(self, request):
+        master_project = Project.objects.all()
+        return render(request, self.template_name,
+                      {"master_project": master_project})
+
+def update_post(request):
+    if request.method == 'POST':
+        leader = request.POST.get('postleader')
+        teacher = request.POST.get('postteacher')
+        type = request.POST.get('posttype')
+        description = request.POST.get('postdes')
+        response_data = {}
+        post = Project.objects.get(id=int(QueryDict(request.body).get('postpk')))
+        # post.leader = leader
+        # post.teacher = teacher
+        # post.type = type
+        post.description = description
+        post.save()
+        # Project.objects.filter(id=int(QueryDict(request.body).get('postpk'))).update(description=description)
+
+        response_data['result'] = 'Create post successful!'
+        response_data['text'] = post.description
+
+        return HttpResponse(
+            json.dumps(response_data),
+            content_type="application/json"
+        )
+    else:
+        return HttpResponse(
+            json.dumps({"nothing to see": "this isn't happening"}),
+            content_type="application/json"
+        )
+
+def delete_post(request):
+    if request.method == 'DELETE':
+
+        post = Project.objects.get(id=int(QueryDict(request.body).get('postpk')))
+        print post
+        post.delete()
+
+        response_data = {}
+        response_data['msg'] = 'Project was deleted.'
+
+        return HttpResponse(
+            json.dumps(response_data),
+            content_type="application/json"
+        )
+    else:
+        return HttpResponse(
+            json.dumps({"nothing to see": "this isn't happening"}),
+            content_type="application/json"
+        )
 
 #TODO
 class ProjectUpdate(DetailView):

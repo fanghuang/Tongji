@@ -3,6 +3,5 @@ from announcement import views
 
 
 urlpatterns = patterns('',
-                       url(r'^announcement/$', views.AnnouncementListView.as_view(), name='announcement_list'),
-
-                       )
+	url(r'^announcement/$', views.AnnouncementListView.as_view(), name='announcement_list'),
+)

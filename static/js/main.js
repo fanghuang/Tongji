@@ -47,7 +47,10 @@ function update_post(project_id){
         url : "update_post/", // the endpoint
         type : "POST", // http method
         data : {postpk : project_id,
-                the_post : $('#description-'+project_id).val() }, // data sent with the delete request
+                postleader : $('#leader-'+project_id).val(),
+                postteacher : $('#teacher-'+project_id).val(),
+                posttype : $('#type-'+project_id).val(),
+                postdes : $('#description-'+project_id).val() }, // data sent with the delete request
         success : function(json) {
             alert('Updated!');
             console.log(json); // log the returned json to the console
@@ -83,12 +86,13 @@ function delete_post(project_id){
               console.log("post deletion successful");
             },
 
-            error : function(xhr,errmsg,err) {
+            error : function(json) {
                 // Show an error
                 // $('#results').html("<div class='alert-box alert radius' data-alert>"+
                 // "Oops! We have encountered an error. <a href='#' class='close'>&times;</a></div>"); // add error to the dom
                 // console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
-                console.log("BAD BAD BAD")
+                console.log("BAD BAD BAD");
+                console.log(json);
             }
         });
     } else {

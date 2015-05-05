@@ -48,12 +48,18 @@ def language_switch(request):
 
 def update_post(request):
     if request.method == 'POST':
-        post_text = request.POST.get('the_post')
+        leader = request.POST.get('postleader')
+        teacher = request.POST.get('postteacher')
+        type = request.POST.get('posttype')
+        description = request.POST.get('postdes')
         response_data = {}
         post = Project.objects.get(id=int(QueryDict(request.body).get('postpk')))
-        post.description = post_text
+        # post.leader = leader
+        # post.teacher = teacher
+        # post.type = type
+        post.description = description
         post.save()
-        # Project.objects.filter(id=int(QueryDict(request.body).get('postpk'))).update(description=post_text)
+        # Project.objects.filter(id=int(QueryDict(request.body).get('postpk'))).update(description=description)
 
         response_data['result'] = 'Create post successful!'
         response_data['text'] = post.description
