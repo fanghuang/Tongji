@@ -6,7 +6,12 @@
     <div class="col-md-3"></div>
     <div class="col-md-6 center-block">
         <div class="well bs-component">
-            <legend>{% trans "Search" %}</legend>
+            <legend>{% trans "Search" %}
+            <div class="panel panel-dafault">
+                <div class="panel-body">
+                <input class="form-control input-lg" type="text" id="inputLarge" placeholder="Search..."></div>
+            </div>
+            </legend>
             <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                 {% for mp in master_project%}
                 <div class="panel panel-default" id="post-{{mp.id}}">

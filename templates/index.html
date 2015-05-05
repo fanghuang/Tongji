@@ -2,6 +2,21 @@
 {% load i18n %}
 
 {% block page %}
+{% if user.is_superuser %}
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6 center-block">
+        <div class="well bs-component">
+            <legend>Hello {% trans "Super User" %}</legend>
+                <h5>Here are the three super powers</h5>
+                <a class="btn btn-primary btn-raised" href="{% url "tjadmin_create_student" %}">{% trans "Create Student" %}</a>
+                <a class="btn btn-primary btn-raised" href="{% url "tjadmin_upload_student" %}">{% trans "Upload Student List" %}</a>
+                <a class="btn btn-primary btn-raised" href="{% url "tjadmin_create_announcement" %}">{% trans "Create Announcement" %}</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% else %}
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-3"></div>
@@ -139,7 +154,7 @@
         </div>
     </div>
 </div>
-
+{% endif %}
 
 <script src="/static/js/main.js"></script>
 {% endblock %}
