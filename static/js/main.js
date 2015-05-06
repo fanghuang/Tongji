@@ -1,10 +1,9 @@
 $(function() {
 
-    $('#post-form').on('submit', function(event){
-        event.preventDefault();
-        console.log("form submitted fang")  // sanity check
-        create_post();
-    });
+$('#inputSearch').keyup(function(){
+    console.log($('#inputSearch').val())  // sanity check
+    // create_post();
+});
 
 // AJAX for posting
 function create_post() {
