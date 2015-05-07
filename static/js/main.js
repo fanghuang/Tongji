@@ -2,7 +2,21 @@ $(function() {
 
 $('#inputSearch').keyup(function(){
     console.log($('#inputSearch').val())  // sanity check
-    // create_post();
+    $.ajax({
+        url : "search_title/", // the endpoint
+        type : "POST", // http method
+        data : { search_text : $('#inputSearch').val() },
+        success : function(json) {
+            // alert('searched!');
+            console.log(json); // log the returned json to the console
+            $('#search_results').html(json); // hide the post on success
+            console.log("successfully searched");
+        },
+        dataType: 'html',
+        error : function(xhr,errmsg,err) {
+            console.log("failed searching")
+        }
+    })
 });
 
 // AJAX for posting

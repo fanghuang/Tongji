@@ -9,8 +9,6 @@ from django.http import HttpResponse
 from django.http.request import (HttpRequest, QueryDict,
     RawPostDataException, UnreadablePostError, build_request_repr)
 
-from project.models import Project
-
 import json
 
 class ProposalCreateView(LoginRequiredMixin, View):
@@ -125,6 +123,16 @@ def delete_post(request):
             json.dumps({"nothing to see": "this isn't happening"}),
             content_type="application/json"
         )
+
+def search_title(request):
+    if request.method == "POST":
+        search_text = request.POST['search_text']
+        if not search_text:
+            search_text = "Nothing to Search"
+
+    project = Project.objects.filter(title__contains=search_text)
+
+    return render(request, "project/search_result.html", {"project":project})
 
 #TODO
 class ProjectUpdate(DetailView):

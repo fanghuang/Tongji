@@ -9,7 +9,10 @@
             <legend>{% trans "Search" %}
             <div class="panel panel-dafault">
                 <div class="panel-body">
+                {% csrf_token %}
                 <input class="form-control input-lg" type="text" id="inputSearch" placeholder="Search..."></div>
+                <ul id="search_results"></ul>
+
             </div>
             </legend>
             <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">

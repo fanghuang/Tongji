@@ -1,0 +1,11 @@
+{% if project.count > 0 %}
+
+{% for p in project %}
+	<li>{{p.title}}</li>
+	{# <li>{{p.leader}}</li> #}
+{% endfor %}
+{% else %}
+
+<li>doesnt exist</li>
+
+{% endif %}
