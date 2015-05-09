@@ -11,4 +11,5 @@ urlpatterns = patterns('',
 	url(r'^search/delete_post/$', views.delete_post, name="delete_post"),
 	url(r'^search/update_post/$', views.update_post, name="update_post"),
 	url(r'^search/search_title/$', views.search_title, name="search_title"),
+	url(r'^plist/$', views.ProjectListView.as_view(), name='project_list'),
 )

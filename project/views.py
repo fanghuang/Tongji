@@ -138,7 +138,15 @@ def search_title(request):
 
     return render(request, "project/search_result.html", {"project":project})
 
-#TODO
+
+class ProjectListView(DetailView):
+    template_name = "project/project_list.html"
+
+    def get(self, request):
+        master_project = Project.objects.all().order_by('status')
+        return render(request, self.template_name,
+                      {"master_project": master_project})
+
 class ProjectUpdate(DetailView):
     model = Project
     model1 = Student

@@ -115,7 +115,7 @@ msgid "Tongji Innovation Management System"
 msgstr "同济大学创新项目管理系统"
 
 #: templates/base.html:43
-msgid "Proposals"
+msgid "Proposal"
 msgstr "立项"
 
 #: templates/base.html:44
@@ -205,3 +205,9 @@ msgstr "通过"
 
 msgid "REJECTED"
 msgstr "否决"
+
+msgid "Project"
+msgstr "项目"
+
+msgid "Project List"
+msgstr "项目列表"

@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block page %}
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6 center-block">
+        <div class="well bs-component">
+            <legend>{% trans "Project List" %}</legend>
+            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                {% for mp in master_project%}
+                <div class="panel panel-default" id="post-{{mp.id}}">
+                    <div class="panel-heading" role="tab" id="headingOne">
+                        <h4 class="panel-title">
+                            <div class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#mp{{ forloop.counter }}" aria-expanded="false" aria-controls="mp{{ forloop.counter }}">
+                                {{ mp }}
+                                <div class="icon-preview pull-right">
+                                    {% if mp.status == "PENDING" %}
+                                        {# <p class="text-muted">{% trans "Status" %}</p> #}
+                                        <p class="text-muted">{% trans "PENDING" %}</p>
+                                    {% elif mp.status == "APPROVED" %}
+                                        <p class="text-success">{% trans "APPROVED" %}</p>
+                                    {% else%}
+                                        <p class="text-danger">{% trans "REJECTED" %}</p>
+                                    {% endif%}
+                                </div>
+                            </div>
+                        </h4>
+                    </div>
+                    <div id="mp{{ forloop.counter }}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                        <div class="panel-body">
+                            <form class="form-inline">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <form action="." method="post" class="form-horizontal">
+                                            {% csrf_token %}
+                                            <fieldset>
+                                                <div class="form-group">
+                                                    <label for="id_leader" class="col-md-4 control-label">Leader</label>
+                                                    <div class="col-md-8">
+                                                        <input class="form-control" id="id_leader" value="{{ mp.leader }}">
+                                                    </div>
+                                                    <label for="id_leader" class="col-md-4 control-label">Teacher</label>
+                                                    <div class="col-md-8">
+                                                        <input class="form-control" id="id_leader" value="{{ mp.teacher }}">
+                                                    </div>
+                                                    <label for="id_leader" class="col-md-4 control-label">Type</label>
+                                                    <div class="col-md-8">
+                                                        <input class="form-control" id="id_leader" value="{{ mp.get_type_display }}">
+                                                    </div>
+                                                    <label for="id_leader" class="col-md-4 control-label">Description</label>
+                                                    <div class="col-md-8">
+                                                        <textarea class="form-control" rows="3" id="description-{{ mp.id }}">{{ mp.description }}</textarea>
+                                                    </div>
+                                                    <label for="id_leader" class="col-md-4 control-label">Status</label>
+                                                    <div class="col-md-8">
+                                                        <select class="form-control" id="status-{{ mp.id }}"><option>{{ mp.status }}</option></select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="col-md-2">
+                                                        <button id="update-{{ mp.id }}"  class="btn btn-primary">{% trans "Update" %}</button>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="col-md-2">
+                                                        <button id="delete-{{ mp.id }}" class="btn btn-danger">{% trans "Delete" %}</button>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                        </form>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="/static/js/main.js"></script>
+{% endblock %}
