@@ -130,7 +130,7 @@ def search_title(request):
         if not search_text:
             search_text = "Nothing to Search"
 
-    project = Project.objects.filter(title__contains=search_text)
+    project = Project.objects.filter(status__contains=search_text) or Project.objects.filter(title__contains=search_text)
 
     return render(request, "project/search_result.html", {"project":project})
 

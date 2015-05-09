@@ -8,7 +8,7 @@ $('#inputSearch').keyup(function(){
         data : { search_text : $('#inputSearch').val() },
         success : function(json) {
             // alert('searched!');
-            console.log(json); // log the returned json to the console
+            // console.log(json); // log the returned json to the console
             $('#search_results').html(json); // hide the post on success
             console.log("successfully searched");
         },
@@ -66,7 +66,7 @@ function update_post(project_id){
                 postdes : $('#description-'+project_id).val() }, // data sent with the delete request
         success : function(json) {
             alert('Updated!');
-            console.log(json); // log the returned json to the console
+            // console.log(json); // log the returned json to the console
           // $('#post-'+project_id).hide(); // hide the post on success
             console.log("post update successful");
         },
