@@ -8,9 +8,15 @@ from project.models import Project
 from django.http import HttpResponse
 from django.http.request import (HttpRequest, QueryDict,
     RawPostDataException, UnreadablePostError, build_request_repr)
-
-import json
+from django.contrib.admin.views.decorators import staff_member_required
 from itertools import chain
+import json
+
+class StaffLoginRequiredMixin(object):
+    @classmethod
+    def as_view(cls, **initkwargs):
+        view = super(StaffLoginRequiredMixin, cls).as_view(**initkwargs)
+        return staff_member_required(view)
 
 class ProposalCreateView(LoginRequiredMixin, View):
     template_name = "project/create_proposal.html"
@@ -69,7 +75,7 @@ class ProjectDetailView(DetailView):
             return project
 
 
-class ProjectSearchingView(DetailView):
+class ProjectSearchingView(StaffLoginRequiredMixin, DetailView):
     template_name = "project/search_list.html"
 
     def get(self, request):
@@ -138,8 +144,7 @@ def search_title(request):
 
     return render(request, "project/search_result.html", {"project":project})
 
-
-class ProjectListView(DetailView):
+class ProjectListView(StaffLoginRequiredMixin, DetailView):
     template_name = "project/project_list.html"
 
     def get(self, request):
