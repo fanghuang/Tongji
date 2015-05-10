@@ -33,7 +33,9 @@
                 </div>
                 <div class="navbar-collapse collapse navbar-inverse-collapse" id="myNavbar">
                     <ul class="nav navbar-nav">
+                        {% if not user.is_superuser %}
                         <li><a href="{% url "create_proposal" %}">{% trans "Proposal" %}</a></li>
+                        {% endif %}
                         <li><a href="{% url "announcement_list" %}">{% trans "Announcement" %}</a></li>
                         {% if user.is_superuser %}
                         <li><a href="{% url "search_list" %}">{% trans "Search" %}</a></li>
