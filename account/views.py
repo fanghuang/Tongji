@@ -72,4 +72,3 @@ class SettingView(LoginRequiredMixin, View):
 class SuperuserView(StaffLoginRequiredMixin, TemplateView):
 
     template_name = "tjadmin/tjadmin.html"
-        

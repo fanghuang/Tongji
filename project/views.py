@@ -7,16 +7,18 @@ from project.forms import ProposalForm
 from project.models import Project
 from django.http import HttpResponse
 from django.http.request import (HttpRequest, QueryDict,
-    RawPostDataException, UnreadablePostError, build_request_repr)
+                                 RawPostDataException, UnreadablePostError, build_request_repr)
 from django.contrib.admin.views.decorators import staff_member_required
 from itertools import chain
 import json
+
 
 class StaffLoginRequiredMixin(object):
     @classmethod
     def as_view(cls, **initkwargs):
         view = super(StaffLoginRequiredMixin, cls).as_view(**initkwargs)
         return staff_member_required(view)
+
 
 class ProposalCreateView(LoginRequiredMixin, View):
     template_name = "project/create_proposal.html"
@@ -55,8 +57,6 @@ class ProposalCreateView(LoginRequiredMixin, View):
                     pass
                 project.members.add(member2)
 
-
-
             return redirect('index')
         else:
 
@@ -82,6 +82,7 @@ class ProjectSearchingView(StaffLoginRequiredMixin, DetailView):
         master_project = Project.objects.all()
         return render(request, self.template_name,
                       {"master_project": master_project})
+
 
 def update_post(request):
     if request.method == 'POST':
@@ -111,25 +112,26 @@ def update_post(request):
             content_type="application/json"
         )
 
+
 def delete_post(request):
     if request.method == 'DELETE':
 
         post = Project.objects.get(id=int(QueryDict(request.body).get('postpk')))
-        print post
-        post.delete()
-
-        response_data = {}
-        response_data['msg'] = 'Project was deleted.'
-
-        return HttpResponse(
-            json.dumps(response_data),
-            content_type="application/json"
-        )
+        if request.user == post.leader:
+            post.delete()
+            response_data = {'msg': 'Project was deleted.'}
+            return HttpResponse(
+                json.dumps(response_data),
+                content_type="application/json"
+            )
+        else:
+            return HttpResponse('Not Authorized')
     else:
         return HttpResponse(
             json.dumps({"nothing to see": "this isn't happening"}),
             content_type="application/json"
         )
+
 
 def search_title(request):
     if request.method == "POST":
@@ -142,7 +144,8 @@ def search_title(request):
     project = sorted(chain(r1, r2))
     # project = Project.objects.filter(status__contains=search_text) or Project.objects.filter(title__contains=search_text)
 
-    return render(request, "project/search_result.html", {"project":project})
+    return render(request, "project/search_result.html", {"project": project})
+
 
 class ProjectListView(StaffLoginRequiredMixin, DetailView):
     template_name = "project/project_list.html"
@@ -152,10 +155,11 @@ class ProjectListView(StaffLoginRequiredMixin, DetailView):
         return render(request, self.template_name,
                       {"master_project": master_project})
 
+
 class ProjectUpdate(DetailView):
     model = Project
     model1 = Student
-    
+
     fields = ['title', 'leader', 'description', 'type']
     template_name = "project/project_update.html"
 
