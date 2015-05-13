@@ -7,6 +7,32 @@
     <div class="col-md-6 center-block">
         <div class="well bs-component">
             <legend>{% trans "Project List" %}</legend>
+            <div class="row">
+                <form method="get">
+                    <div class="col-md-2">
+                        <p>filter:</p>
+                    </div>
+
+                    <div class="col-md-2">
+                        by type:
+                        <select name="type">
+                            <option value="ALL">All</option>
+                        {% for type in type_option %}
+                            <option value="{{ type.0 }}">{{ type.1 }}</option>
+                        {% endfor %}
+
+
+                        </select>
+                    </div>
+                <div class="col-md-2">
+                    <input type="submit">
+                </div>
+                </form>
+
+
+
+            </div>
+
             <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                 {% for mp in master_project%}
                 <div class="panel panel-default" id="post-{{mp.id}}">

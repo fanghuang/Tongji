@@ -117,7 +117,9 @@ def delete_post(request):
     if request.method == 'DELETE':
 
         post = Project.objects.get(id=int(QueryDict(request.body).get('postpk')))
-        if request.user == post.leader:
+        print post
+        if request.user.is_staff or request.user == post.leader:
+            print request.user
             post.delete()
             response_data = {'msg': 'Project was deleted.'}
             return HttpResponse(
@@ -150,10 +152,15 @@ def search_title(request):
 class ProjectListView(StaffLoginRequiredMixin, DetailView):
     template_name = "project/project_list.html"
 
-    def get(self, request):
-        master_project = Project.objects.all().order_by('status')
+    def get(self, request, *args, **kwargs):
+        type = request.GET.get("type")
+        if type!='ALL' and type!=None:
+            master_project = Project.objects.filter(type=type)
+        else:
+            master_project = Project.objects.all().order_by('status')
+
         return render(request, self.template_name,
-                      {"master_project": master_project})
+                      {"master_project": master_project, "type_option":Project.TYPE_CHOICES})
 
 
 class ProjectUpdate(DetailView):
