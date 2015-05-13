@@ -26,6 +26,7 @@ class Student(models.Model):
     def __unicode__(self):
         return str(self.student_id)
         # TODO idk why i cant return user.first_name
+        # why not? seems fine with me
         # return self.user.first_name
 
 

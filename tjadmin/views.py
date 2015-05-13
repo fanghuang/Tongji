@@ -49,6 +49,7 @@ class UploadStudentView(StaffLoginRequiredMixin, TemplateView):
         if form.is_valid():
             student_file = request.FILES['student_file']
             student_list = parse_student_file(student_file)
+            print student_list
             return render(request, "tjadmin/upload_student_confirm.html", {'student_list': student_list})
         else:
             return redirect("tjadmin")
@@ -57,7 +58,7 @@ class UploadStudentView(StaffLoginRequiredMixin, TemplateView):
 class UploadStudentConfirmedView(StaffLoginRequiredMixin, TemplateView):
 
     def get(self, request):
-        print request
+        return HttpResponse("success")
 
 
 class ProjectSearchView(StaffLoginRequiredMixin, TemplateView):
@@ -103,11 +104,15 @@ def parse_student_file(file):
     #Skip the header
     next(reader)
     for row in reader:
-        student_id = row[0]
-        student_name = row[1]
-        password = row[2]
-        start_year = row[3]
-        Student.create_student(student_id, student_name, password, start_year)
+        try:
+            student_id = row[0].strip()
+            student_name = row[1].strip()
+            password = row[2].strip()
+            start_year = row[3].strip()
+            Student.create_student(student_id, student_name, password, start_year)
+        except Exception as e:
+            print e
+
     return ["DONE!"]
 
 
