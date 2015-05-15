@@ -48,7 +48,14 @@
                                     </div>
                                     <label for="id_leader" class="col-md-4 control-label">Status</label>
                                     <div class="col-md-8">
-                                        <select class="form-control" id="status-{{ sp.id }}"><option>{{ sp.status }}</option></select>
+                                        <select class="form-control" id="status-{{ sp.id }}">
+                                            {% for status in status_option %}
+                                                {% if sp.status == status.0 %}
+                                                    <option selected value="{{ status.0 }}">{{ status.0 }}</option>
+                                                {% else %}
+                                                    <option value="{{ status.0 }}">{{ status.0 }}</option>
+                                                {% endif %}
+                                            {% endfor %}</select>
                                     </div>
                                 </div>
                                 <div class="form-group">

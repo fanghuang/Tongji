@@ -82,7 +82,11 @@
                                                     <div class="col-md-8">
                                                         <select class="form-control" id="status-{{ mp.id }}">
                                                             {% for status in status_option %}
-                                                            <option value="{{ status.0 }}">{{ status.1 }}</option>
+                                                                {% if mp.status == status.0 %}
+                                                                    <option selected value="{{ status.0 }}">{{ status.0 }}</option>
+                                                                {% else %}
+                                                                    <option value="{{ status.0 }}">{{ status.0 }}</option>
+                                                                {% endif %}
                                                             {% endfor %}</select>
                                                     </div>
                                                 </div>

@@ -149,7 +149,9 @@ def search_title(request):
     project = sorted(chain(r1, r2))
     # project = Project.objects.filter(status__contains=search_text) or Project.objects.filter(title__contains=search_text)
 
-    return render(request, "project/search_result.html", {"project": project})
+    return render(request, "project/search_result.html", 
+        {"project": project,
+        "status_option":Project.STATUS_CHOICES})
 
 
 class ProjectListView(StaffLoginRequiredMixin, DetailView):
