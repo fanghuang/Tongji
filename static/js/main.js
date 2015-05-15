@@ -55,7 +55,8 @@ $("#accordion").on('click', 'button[id^=update-]', function(event){
 });
 
 function update_post(project_id){
-    console.log("update_post is working")
+    console.log("update_post is working");
+    console.log($('#status-'+project_id).val());
     $.ajax({
         url : "update_post/", // the endpoint
         type : "POST", // http method
@@ -63,7 +64,8 @@ function update_post(project_id){
                 postleader : $('#leader-'+project_id).val(),
                 postteacher : $('#teacher-'+project_id).val(),
                 posttype : $('#type-'+project_id).val(),
-                postdes : $('#description-'+project_id).val() }, // data sent with the delete request
+                postdes : $('#description-'+project_id).val(),
+                poststatus : $('#status-'+project_id).val() }, // data sent with the delete request
         success : function(json) {
             alert('Updated!');
             // console.log(json); // log the returned json to the console

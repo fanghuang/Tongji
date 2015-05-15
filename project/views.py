@@ -90,11 +90,14 @@ def update_post(request):
         teacher = request.POST.get('postteacher')
         type = request.POST.get('posttype')
         description = request.POST.get('postdes')
+        status = request.POST.get('poststatus')
+        print status, description
         response_data = {}
         post = Project.objects.get(id=int(QueryDict(request.body).get('postpk')))
         # post.leader = leader
         # post.teacher = teacher
         # post.type = type
+        post.status = status
         post.description = description
         post.save()
         # Project.objects.filter(id=int(QueryDict(request.body).get('postpk'))).update(description=description)
@@ -160,7 +163,9 @@ class ProjectListView(StaffLoginRequiredMixin, DetailView):
             master_project = Project.objects.all().order_by('status')
 
         return render(request, self.template_name,
-                      {"master_project": master_project, "type_option":Project.TYPE_CHOICES})
+                      {"master_project": master_project, 
+                      "type_option":Project.TYPE_CHOICES,
+                      "status_option":Project.STATUS_CHOICES})
 
 
 class ProjectUpdate(DetailView):
