@@ -69,7 +69,15 @@ function update_post(project_id){
         success : function(json) {
             alert('Updated!');
             // console.log(json); // log the returned json to the console
-          // $('#post-'+project_id).hide(); // hide the post on success
+            $('#col_status-'+project_id).hide(); // hide the post on success
+            if (json.status=="PENDING") {
+                $('#pos_status-'+project_id).append("<p class='text-muted'>"+json.status+"</p>");
+            } else if (json.status=="APPROVED") {
+                $('#pos_status-'+project_id).append("<p class='text-success'>"+json.status+"</p>");
+            } else {
+                $('#pos_status-'+project_id).append("<p class='text-danger'>"+json.status+"</p>");
+            }
+            // console.log(json.status);
             console.log("post update successful");
         },
         error : function(xhr,errmsg,err) {

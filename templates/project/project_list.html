@@ -40,14 +40,14 @@
                         <h4 class="panel-title">
                             <div class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#mp{{ forloop.counter }}" aria-expanded="false" aria-controls="mp{{ forloop.counter }}">
                                 {{ mp }}
-                                <div class="icon-preview pull-right">
+                                <div class="icon-preview pull-right" id="pos_status-{{mp.id}}">
                                     {% if mp.status == "PENDING" %}
                                         {# <p class="text-muted">{% trans "Status" %}</p> #}
-                                        <p class="text-muted">{% trans "PENDING" %}</p>
+                                        <p class="text-muted" id="col_status-{{mp.id}}">{% trans "PENDING" %}</p>
                                     {% elif mp.status == "APPROVED" %}
-                                        <p class="text-success">{% trans "APPROVED" %}</p>
+                                        <p class="text-success" id="col_status-{{mp.id}}">{% trans "APPROVED" %}</p>
                                     {% else%}
-                                        <p class="text-danger">{% trans "REJECTED" %}</p>
+                                        <p class="text-danger" id="col_status-{{mp.id}}">{% trans "REJECTED" %}</p>
                                     {% endif%}
                                 </div>
                             </div>

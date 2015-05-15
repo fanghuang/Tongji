@@ -104,6 +104,7 @@ def update_post(request):
 
         response_data['result'] = 'Create post successful!'
         response_data['text'] = post.description
+        response_data['status'] = post.status
 
         return HttpResponse(
             json.dumps(response_data),
