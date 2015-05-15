@@ -91,12 +91,12 @@ def update_post(request):
         type = request.POST.get('posttype')
         description = request.POST.get('postdes')
         status = request.POST.get('poststatus')
-        print status, description
+        print status, description, type
         response_data = {}
         post = Project.objects.get(id=int(QueryDict(request.body).get('postpk')))
         # post.leader = leader
         # post.teacher = teacher
-        # post.type = type
+        post.type = type
         post.status = status
         post.description = description
         post.save()
@@ -152,6 +152,7 @@ def search_title(request):
 
     return render(request, "project/search_result.html", 
         {"project": project,
+        "type_option":Project.TYPE_CHOICES,
         "status_option":Project.STATUS_CHOICES})
 
 

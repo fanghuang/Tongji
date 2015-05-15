@@ -72,7 +72,14 @@
                                                     </div>
                                                     <label for="id_leader" class="col-md-4 control-label">Type</label>
                                                     <div class="col-md-8">
-                                                        <input class="form-control" id="id_leader" value="{{ mp.get_type_display }}">
+                                                        <select class="form-control" id="type-{{ mp.id }}">
+                                                            {% for type in type_option %}
+                                                                {% if mp.type == type.0 %}
+                                                                    <option selected value="{{ type.0 }}">{{ type.1 }}</option>
+                                                                {% else %}
+                                                                    <option value="{{ type.0 }}">{{ type.1 }}</option>
+                                                                {% endif %}
+                                                            {% endfor %}</select>
                                                     </div>
                                                     <label for="id_leader" class="col-md-4 control-label">Description</label>
                                                     <div class="col-md-8">
@@ -83,9 +90,9 @@
                                                         <select class="form-control" id="status-{{ mp.id }}">
                                                             {% for status in status_option %}
                                                                 {% if mp.status == status.0 %}
-                                                                    <option selected value="{{ status.0 }}">{{ status.0 }}</option>
+                                                                    <option selected value="{{ status.0 }}">{{ status.1 }}</option>
                                                                 {% else %}
-                                                                    <option value="{{ status.0 }}">{{ status.0 }}</option>
+                                                                    <option value="{{ status.0 }}">{{ status.1 }}</option>
                                                                 {% endif %}
                                                             {% endfor %}</select>
                                                     </div>
