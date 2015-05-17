@@ -7,18 +7,18 @@
     <div class="col-md-6 center-block">
         <div class="well bs-component">
             <legend>{% trans "Project List" %}</legend>
-            <div class="row">
-                <form method="get">
-                    <div class="col-md-2">
-                        Filter by type:
-                        <select name="type" id="filter-type">
+            <div class="panel panel-dafault">
+                <div class="panel-body">
+                    <label for="select" class="col-md-2 control-label">Filter by type</label>
+                    <div class="col-md-8">
+                        <select name="type" class="form-control" id="filter-type">
                             <option value="ALL">All</option>
                         {% for type in type_option %}
                             <option value="{{ type.0 }}">{{ type.1 }}</option>
                         {% endfor %}
                         </select>
                     </div>
-                </form>
+                </div>
             </div>
 
             <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">

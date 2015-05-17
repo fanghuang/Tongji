@@ -170,7 +170,7 @@ def filter_type(request):
     if request.method == "POST":
         filter_type = request.POST['filter_type']
         if filter_type!='ALL' and filter_type!=None:
-            master_project = Project.objects.filter(type=filter_type)
+            master_project = Project.objects.filter(type=filter_type).order_by('status')
         else:
             master_project = Project.objects.all().order_by('status')
 
