@@ -160,7 +160,7 @@ class ProjectListView(StaffLoginRequiredMixin, DetailView):
     template_name = "project/project_list.html"
 
     def get(self, request):
-        master_project = Project.objects.all()
+        master_project = Project.objects.all().order_by('status')
         return render(request, self.template_name,
                       {"master_project": master_project, 
                       "type_option":Project.TYPE_CHOICES,
