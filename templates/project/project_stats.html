@@ -8,23 +8,21 @@
         <div class="well bs-component">
             <legend>{% trans "Statistics" %}</legend>
             <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-                <div id="pieChart"></div>
-                <li>{{master_project.status}}</li>
-
+                <div id="pieChart" align="center"></div>
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
                 <script src="/static/js/d3pie.min.js"></script>
                 <script>
                 var pie = new d3pie("pieChart", {
                     "header": {
                         "title": {
-                            "text": "Tongji Project",
+                            "text": "Tongji Student Project",
                             "fontSize": 24,
                             "font": "open sans"
                         },
                         "subtitle": {
                             "text": "A pie chart to show the statistics of all the project",
                             "color": "#999999",
-                            "fontSize": 12,
+                            
                             "font": "open sans"
                         },
                         "titleSubtitlePadding": 9
@@ -43,17 +41,17 @@
                         "sortOrder": "value-desc",
                         "content": [
                             {
-                                "label": "PENDING",
+                                "label": "{% trans "PENDING" %}",
                                 "value": {{p_stats}},
                                 "color": "#777"
                             },
                             {
-                                "label": "APPROVED",
+                                "label": "{% trans "APPROVED" %}",
                                 "value": {{a_stats}},
                                 "color": "#4caf50"
                             },
                             {
-                                "label": "REJECTED",
+                                "label": "{% trans "REJECTED" %}",
                                 "value": {{r_stats}},
                                 "color": "#f44336"
                             }
@@ -68,7 +66,7 @@
                             "hideWhenLessThanPercentage": 3
                         },
                         "mainLabel": {
-                            "fontSize": 11
+                            "fontSize": 13
                         },
                         "percentage": {
                             "color": "#ffffff",
@@ -76,7 +74,7 @@
                         },
                         "value": {
                             "color": "#adadad",
-                            "fontSize": 11
+                            "fontSize": 13
                         },
                         "lines": {
                             "enabled": true
