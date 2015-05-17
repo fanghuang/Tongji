@@ -1,0 +1,84 @@
+{% load i18n %}
+
+{% for mp in master_project%}
+    <div class="panel panel-default" id="post-{{mp.id}}">
+        <div class="panel-heading" role="tab" id="headingOne">
+            <h4 class="panel-title">
+                <div class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#mp{{ forloop.counter }}" aria-expanded="false" aria-controls="mp{{ forloop.counter }}">
+                    {{ mp }}
+                    <div class="icon-preview pull-right" id="pos_status-{{mp.id}}">
+                        {% if mp.status == "PENDING" %}
+                            {# <p class="text-muted">{% trans "Status" %}</p> #}
+                            <p class="text-muted" id="col_status-{{mp.id}}">{% trans "PENDING" %}</p>
+                        {% elif mp.status == "APPROVED" %}
+                            <p class="text-success" id="col_status-{{mp.id}}">{% trans "APPROVED" %}</p>
+                        {% else%}
+                            <p class="text-danger" id="col_status-{{mp.id}}">{% trans "REJECTED" %}</p>
+                        {% endif%}
+                    </div>
+                </div>
+            </h4>
+        </div>
+        <div id="mp{{ forloop.counter }}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+            <div class="panel-body">
+                <form class="form-inline">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <form action="." method="post" class="form-horizontal">
+                                {% csrf_token %}
+                                <fieldset>
+                                    <div class="form-group">
+                                        <label for="id_leader" class="col-md-4 control-label">Leader</label>
+                                        <div class="col-md-8">
+                                            <input class="form-control" id="id_leader" value="{{ mp.leader }}">
+                                        </div>
+                                        <label for="id_leader" class="col-md-4 control-label">Teacher</label>
+                                        <div class="col-md-8">
+                                            <input class="form-control" id="teacher-{{ mp.id }}" value="{{ mp.teacher }}">
+                                        </div>
+                                        <label for="id_leader" class="col-md-4 control-label">Type</label>
+                                        <div class="col-md-8">
+                                            <select class="form-control" id="type-{{ mp.id }}">
+                                                {% for type in type_option %}
+                                                    {% if mp.type == type.0 %}
+                                                        <option selected value="{{ type.0 }}">{{ type.1 }}</option>
+                                                    {% else %}
+                                                        <option value="{{ type.0 }}">{{ type.1 }}</option>
+                                                    {% endif %}
+                                                {% endfor %}</select>
+                                        </div>
+                                        <label for="id_leader" class="col-md-4 control-label">Description</label>
+                                        <div class="col-md-8">
+                                            <textarea class="form-control" rows="3" id="description-{{ mp.id }}">{{ mp.description }}</textarea>
+                                        </div>
+                                        <label for="id_leader" class="col-md-4 control-label">Status</label>
+                                        <div class="col-md-8">
+                                            <select class="form-control" id="status-{{ mp.id }}">
+                                                {% for status in status_option %}
+                                                    {% if mp.status == status.0 %}
+                                                        <option selected value="{{ status.0 }}">{{ status.1 }}</option>
+                                                    {% else %}
+                                                        <option value="{{ status.0 }}">{{ status.1 }}</option>
+                                                    {% endif %}
+                                                {% endfor %}</select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-2">
+                                            <button id="update-{{ mp.id }}"  class="btn btn-primary">{% trans "Update" %}</button>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-2">
+                                            <button id="delete-{{ mp.id }}" class="btn btn-danger">{% trans "Delete" %}</button>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endfor %}

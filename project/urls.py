@@ -14,4 +14,5 @@ urlpatterns = patterns('',
 	url(r'^plist/$', views.ProjectListView.as_view(), name='project_list'),
 	url(r'^plist/delete_post/$', views.delete_post, name="delete_post"),
 	url(r'^plist/update_post/$', views.update_post, name="update_post"),
+	url(r'^plist/filter_type/$', views.filter_type, name="filter_type"),
 )

@@ -159,18 +159,25 @@ def search_title(request):
 class ProjectListView(StaffLoginRequiredMixin, DetailView):
     template_name = "project/project_list.html"
 
-    def get(self, request, *args, **kwargs):
-        type = request.GET.get("type")
-        if type!='ALL' and type!=None:
-            master_project = Project.objects.filter(type=type)
-        else:
-            master_project = Project.objects.all().order_by('status')
-
+    def get(self, request):
+        master_project = Project.objects.all()
         return render(request, self.template_name,
                       {"master_project": master_project, 
                       "type_option":Project.TYPE_CHOICES,
                       "status_option":Project.STATUS_CHOICES})
 
+def filter_type(request):
+    if request.method == "POST":
+        filter_type = request.POST['filter_type']
+        if filter_type!='ALL' and filter_type!=None:
+            master_project = Project.objects.filter(type=filter_type)
+        else:
+            master_project = Project.objects.all().order_by('status')
+
+    return render(request, "project/project_list_detail.html", 
+        {"master_project": master_project,
+        "type_option":Project.TYPE_CHOICES,
+        "status_option":Project.STATUS_CHOICES})
 
 class ProjectUpdate(DetailView):
     model = Project

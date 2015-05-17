@@ -19,6 +19,25 @@ $('#inputSearch').keyup(function(){
     })
 });
 
+$('#filter-type').change(function(){
+    console.log('filter type: ', $('#filter-type').val())  // sanity check
+    $.ajax({
+        url : "filter_type/", // the endpoint
+        type : "POST", // http method
+        data : { filter_type : $('#filter-type').val() },
+        success : function(json) {
+            // alert('searched!');
+            // console.log(json); // log the returned json to the console
+            $('#filter_results').html(json); // hide the post on success
+            console.log("successfully apply filter");
+        },
+        dataType: 'html',
+        error : function(xhr,errmsg,err) {
+            console.log("filter failed")
+        }
+    })
+});
+
 // AJAX for posting
 function create_post() {
     console.log("create post is working!") // sanity check
