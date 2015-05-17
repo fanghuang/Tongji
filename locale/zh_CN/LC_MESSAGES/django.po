@@ -211,3 +211,6 @@ msgstr "项目"
 
 msgid "Project List"
 msgstr "项目列表"
+
+msgid "Statistics"
+msgstr "统计"

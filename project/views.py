@@ -197,3 +197,17 @@ class ProjectUpdate(DetailView):
         print "================"
         return self.request.user.student
 
+class ProjectStatsView(StaffLoginRequiredMixin, DetailView):
+    template_name = "project/project_stats.html"
+
+    def get(self, request):
+        master_project = Project.objects.all()
+
+        p_stats = master_project.filter(status="PENDING").count()
+        a_stats = master_project.filter(status="APPROVED").count()
+        r_stats = master_project.filter(status="REJECTED").count()
+
+        return render(request, self.template_name,
+                      {"p_stats": p_stats,
+                      "a_stats": a_stats,
+                      "r_stats": r_stats})
