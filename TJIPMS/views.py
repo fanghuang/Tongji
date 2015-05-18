@@ -35,7 +35,9 @@ class HomeView(LoginRequiredMixin, View):
             pass
 
         return render(request, self.template_name,
-                      {"leading_project": leading_project, "involved_project": involved_project})
+                      {"leading_project": leading_project,
+                      "involved_project": involved_project,
+                      "type_option":Project.TYPE_CHOICES})
 
 
 def language_switch(request):
@@ -52,17 +54,21 @@ def update_post(request):
         teacher = request.POST.get('postteacher')
         type = request.POST.get('posttype')
         description = request.POST.get('postdes')
+        status = request.POST.get('poststatus')
+        print status, description, type
         response_data = {}
         post = Project.objects.get(id=int(QueryDict(request.body).get('postpk')))
         # post.leader = leader
         # post.teacher = teacher
-        # post.type = type
+        post.type = type
+        # post.status = status
         post.description = description
         post.save()
         # Project.objects.filter(id=int(QueryDict(request.body).get('postpk'))).update(description=description)
 
         response_data['result'] = 'Create post successful!'
         response_data['text'] = post.description
+        response_data['status'] = post.status
 
         return HttpResponse(
             json.dumps(response_data),
