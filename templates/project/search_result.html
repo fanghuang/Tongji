@@ -32,15 +32,17 @@
                                 <div class="form-group">
                                     <label for="id_leader" class="col-md-4 control-label">Leader</label>
                                     <div class="col-md-8">
-                                        <input class="form-control" id="id_leader" value="{{ sp.leader }}">
+                                        {{ sp.leader }}
+                                        {# <input class="form-control" id="id_leader" value="{{ sp.leader }}"> #}
                                     </div>
                                     <label for="id_leader" class="col-md-4 control-label">Teacher</label>
                                     <div class="col-md-8">
-                                        <input class="form-control" id="id_leader" value="{{ sp.teacher }}">
+                                        {{ sp.teacher }}
+                                        {# <input class="form-control" id="id_leader" value="{{ sp.teacher }}"> #}
                                     </div>
                                     <label for="id_leader" class="col-md-4 control-label">Type</label>
                                     <div class="col-md-8">
-                                        <select class="form-control" id="type-{{ mp.id }}">
+                                        <select class="form-control" id="type-{{ sp.id }}">
                                             {% for type in type_option %}
                                                 {% if sp.type == type.0 %}
                                                     <option selected value="{{ type.0 }}">{{ type.1 }}</option>

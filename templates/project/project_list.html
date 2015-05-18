@@ -53,11 +53,13 @@
                                                         <div class="form-group">
                                                             <label for="id_leader" class="col-md-4 control-label">Leader</label>
                                                             <div class="col-md-8">
-                                                                <input class="form-control" id="id_leader" value="{{ mp.leader }}">
+                                                                {{ mp.leader }}
+                                                                {# <input class="form-control" id="id_leader" value="{{ mp.leader }}"> #}
                                                             </div>
                                                             <label for="id_leader" class="col-md-4 control-label">Teacher</label>
                                                             <div class="col-md-8">
-                                                                <input class="form-control" id="teacher-{{ mp.id }}" value="{{ mp.teacher }}">
+                                                                {{ mp.teacher }}
+                                                                {# <input class="form-control" id="teacher-{{ mp.id }}" value="{{ mp.teacher }}"> #}
                                                             </div>
                                                             <label for="id_leader" class="col-md-4 control-label">Type</label>
                                                             <div class="col-md-8">
