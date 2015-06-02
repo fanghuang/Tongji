@@ -50,9 +50,10 @@ class UploadStudentView(StaffLoginRequiredMixin, TemplateView):
             student_file = request.FILES['student_file']
             student_list = parse_student_file(student_file)
             print student_list
-            return render(request, "tjadmin/upload_student_confirm.html", {'student_list': student_list})
+            # return render(request, "tjadmin/upload_student_confirm.html", {'student_list': student_list})
+            return render(request, "tjadmin/upload_successed.html")
         else:
-            return redirect("tjadmin")
+            return render(request, "tjadmin/upload_failed.html")
 
 
 class UploadStudentConfirmedView(StaffLoginRequiredMixin, TemplateView):
