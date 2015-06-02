@@ -38,7 +38,8 @@ class CreateStudentView(StaffLoginRequiredMixin, TemplateView):
         start_year = request.POST['start_year']
         student = Student.create_student(student_id, name, password, start_year)
         #TODO
-        return HttpResponse(str(student) + " created")
+        # return HttpResponse(str(student) + " created")
+        return render(request, "tjadmin/upload_successed.html")
 
 
 class UploadStudentView(StaffLoginRequiredMixin, TemplateView):
