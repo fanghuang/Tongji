@@ -1,7 +1,8 @@
 # Tongji
 
 Latest running version [here](https://tongji.herokuapp.com/)
-Also in [here](http://tongji.csse.rose-hulman.edu:8000/) 
+ID Number: admin
+Password: admin
 
 ## Setup
 
